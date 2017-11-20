@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="userForm" type="form.UserForm" />
+		<form-bean name="listCarForm" type="form.ListCarForm" />
+		<form-bean name="listOrderForm" type="form.ListOrderForm" />
+		<form-bean name="listProducerForm" type="form.ListProducerForm" />
+		<form-bean name="producerForm" type="form.ProducerForm" />
+		<form-bean name="orderForm" type="form.OrderForm" />
+		<form-bean name="listStyleForm" type="form.ListStyleForm" />
+		<form-bean name="styleForm" type="form.StyleForm" />
+		<form-bean name="homeForm" type="form.HomeForm" />
+	</form-beans>
+	
+	<global-forwards>
+        <forward name="login" path="/login.jsp"/>
+    </global-forwards>
+    
+	<action-mappings>
+	
+		<action input="/Login.jsp" name="listCarForm"
+			path="/manageCar" scope="session" type="action.ManageCarAction">
+			<forward name="manageCar" path="/manageCar.jsp" />
+		</action>
+
+		<action input="/Login.jsp" name="listProducerForm"
+			path="/manageProducer" scope="request" type="action.ManageProducerAction">
+			<forward name="manageProducer" path="/manageProducer.jsp" />
+		</action>
+		
+		<action name="producerForm"
+			path="/addProducer" scope="request" type="action.AddProducerAction">
+			<forward name="addProducer" path="/manageProducer.do" redirect="false" />
+		</action>
+		
+		<action name="producerForm"
+			path="/deleteProducer" scope="request" type="action.DeleteProducerAction">
+			<forward name="deleteProducer" path="/manageProducer.do" redirect="true" />
+		</action>
+		
+		<action name="producerForm"
+			path="/editProducer" scope="request" type="action.EditProducerAction">
+			<forward name="editProducer" path="/manageProducer.do" redirect="true" />
+		</action>
+		
+		<action name="listOrderForm"
+			path="/manageOrder" scope="request" type="action.ManageOrderAction">
+			<forward name="manageOrder" path="/manageOrder.jsp"/>
+		</action>
+		
+		<action name="orderForm"
+			path="/deleteOrder" scope="request" type="action.DeleteOrderAction">
+			<forward name="deleteOrder" path="/manageOrder.do" redirect="true" />
+		</action>
+		
+		<action name="userForm"
+			path="/logout" scope="request" type="action.LogoutAction">
+			<forward name="logout" path="/login.jsp"/>
+		</action>
+		
+		<action name="listStyleForm"
+			path="/manageStyle" scope="request" type="action.ManageStyleAction">
+			<forward name="manageStyle" path="/manageStyle.jsp"/>
+		</action>
+		
+		<action name="styleForm"
+			path="/deleteStyle" scope="request" type="action.DeleteStyleAction">
+			<forward name="deleteStyle" path="/manageStyle.do" redirect="true" />
+		</action>
+		
+		<action name="styleForm"
+			path="/addStyle" scope="request" type="action.AddStyleAction">
+			<forward name="addStyle" path="/manageStyle.do" redirect="false" />
+		</action>
+		
+		<action name="styleForm"
+			path="/editStyle" scope="request" type="action.EditStyleAction">
+			<forward name="editStyle" path="/manageStyle.do" redirect="true" />
+		</action>
+		
+		<action name="homeForm"
+			path="/home" scope="session" type="action.HomeAction">
+			<forward name="home" path="/index.jsp" />
+		</action>
+		
+		<action input="/Login.jsp" name="userForm"
+			path="/Login" scope="session" type="action.LoginAction">
+			<forward name="loginAdmin" path="/manageCar.do" />
+			<forward name="loginUser" path="/home.do" />
+			<forward name="loginFail" path="/login.jsp" />
+		</action>
+		
+	</action-mappings>
+	<message-resources parameter="action.ApplicationResources" />
+	
+</struts-config>
