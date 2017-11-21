@@ -12,6 +12,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<form-bean name="listStyleForm" type="form.ListStyleForm" />
 		<form-bean name="styleForm" type="form.StyleForm" />
 		<form-bean name="homeForm" type="form.HomeForm" />
+		<form-bean name="fengShuiForm" type="form.FengShuiForm" />
 	</form-beans>
 	
 	<global-forwards>
@@ -90,6 +91,17 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="loginAdmin" path="/manageCar.do" />
 			<forward name="loginUser" path="/home.do" />
 			<forward name="loginFail" path="/login.jsp" />
+		</action>
+		
+		<action name="listCarForm"
+			path="/listCar" scope="session" type="action.ShowCarAction">
+			<forward name="listCar" path="/showCar.jsp" />
+		</action>
+		
+		<action name="fengShuiForm"
+			path="/fengShui" scope="session" type="action.FengShuiAction">
+			<forward name="fengShui" path="/fengShui.jsp" />
+			<forward name="fengShuiCar" path="/recommendCar.jsp" />	
 		</action>
 		
 	</action-mappings>

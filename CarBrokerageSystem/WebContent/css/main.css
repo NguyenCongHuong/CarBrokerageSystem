@@ -2733,8 +2733,8 @@ h2.title {
 }
 
 .input-info{
-  width: 100%;
-    padding: 8px 10px;
+  	width: 100%;
+    padding: 3px 10px;
     margin: 2px 0;
     display: inline-block;
     border: 1px solid #ccc;

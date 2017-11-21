@@ -77,7 +77,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html" class="active">Home</a></li>
-								<li><a href="index.html" >Phong Thuỷ</a></li>
+								<li><html:link action="/fengShui">Phong Thuỷ</html:link></li>
 								<li><a href="index.html" >So Sánh Xe</a></li>
 							</ul>
 						</div>
@@ -92,40 +92,6 @@
 		</div><!--/header-bottom-->
 
 	</header><!--/header-->
-	
-	<section id="slider"><!--slider-->
-		<div class="container-poster">
-			<div class="row" style="margin-right:0px; margin-left:0px">
-					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
-						</ol>
-						
-						<div class="carousel-inner">
-							<div class="item active">
-								<img src="images\home\alphard-banner.jpg" style="width: 100%">
-							</div>
-							<div class="item">
-								<img src="images\home\fortuner-banner.png" style="width: 100%">
-							</div>
-							<div class="item">
-								<img src="images\home\vios-banner.jpg" style="width: 100%">
-							</div>
-							
-						</div>
-						
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-							<i class="fa fa-angle-left"></i>
-						</a>
-						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</div>
-			</div>
-		</div>
-	</section><!--/slider-->
 
 </body>
 </html>

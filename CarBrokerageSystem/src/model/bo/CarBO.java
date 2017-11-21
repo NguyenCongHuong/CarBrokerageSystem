@@ -12,4 +12,12 @@ public class CarBO {
 	public ArrayList<Car> getListCar(String producerID) {
 		return carDAO.getListCar(producerID);
 	}
+
+	public ArrayList<Car> getListCarHighlight() {
+		return carDAO.getListCarHighlight();
+	}
+	
+	public ArrayList<Car> getListFengShuiCar(int fireElement) {
+		return carDAO.getListFengShuiCar(fireElement);
+	}
 }

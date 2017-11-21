@@ -8,18 +8,15 @@ import java.util.ArrayList;
 
 import model.bean.StyleCar;
 
+public class StyleCarDAO extends BaseDAO {
 
-public class StyleCarDAO extends BaseDAO{
-	
 	/**
 	 * Ham tra ve danh sach phong cach xe
 	 * 
 	 * @return
 	 */
 	public ArrayList<StyleCar> getListStyle() {
-		String sql = " SELECT StyleCarID, StyleCar  " +
-				" FROM [StyleCar] " +
-				" ORDER BY StyleCar ";
+		String sql = " SELECT StyleCarID, StyleCar  " + " FROM [StyleCar] " + " ORDER BY StyleCar ";
 		ResultSet rs = null;
 		try {
 			Connection connection = getMyConnection();
@@ -45,51 +42,49 @@ public class StyleCarDAO extends BaseDAO{
 		}
 		return list;
 	}
-	
+
 	/**
 	 * Ham them mot phong cach xe
 	 * 
 	 * @param styleCar
 	 */
 	public void addStyle(String styleCar) {
-		String sql=	" INSERT INTO [StyleCar](StyleCar) VALUES (?) ";
+		String sql = " INSERT INTO [StyleCar](StyleCar) VALUES (?) ";
 
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-			.prepareStatement(sql);
-			
+			PreparedStatement restmt = connection.prepareStatement(sql);
+
 			restmt.setString(1, styleCar);
-			
+
 			restmt.executeUpdate();
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Ham xoa mot phong cach xe
 	 * 
 	 * @param styleCarID
 	 */
 	public void deleteStyle(String styleCarID) {
-		String sql=	"DELETE FROM [StyleCar] WHERE StyleCarID = ?";
+		String sql = "DELETE FROM [StyleCar] WHERE StyleCarID = ?";
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-			.prepareStatement(sql);
+			PreparedStatement restmt = connection.prepareStatement(sql);
 			restmt.setString(1, styleCarID);
-			
+
 			restmt.executeUpdate();
-		} catch (ClassNotFoundException e){
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Ham sua ten mot phong cach xe
 	 * 
@@ -97,26 +92,26 @@ public class StyleCarDAO extends BaseDAO{
 	 * @param styleCar
 	 */
 	public void editStyle(String styleCarID, String styleCar) {
-		String sql=	" UPDATE [StyleCar] SET StyleCar = ? WHERE StyleCarID = ? ";
+		String sql = " UPDATE [StyleCar] SET StyleCar = ? WHERE StyleCarID = ? ";
 
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-			.prepareStatement(sql);
-			
+			PreparedStatement restmt = connection.prepareStatement(sql);
+
 			restmt.setString(1, styleCar);
 			restmt.setString(2, styleCarID);
-			
+
 			restmt.executeUpdate();
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * Kiem tra ten phong cach da ton tai hay khong: ton tai=true, khong ton tai=false
+	 * Kiem tra ten phong cach da ton tai hay khong: ton tai=true, khong ton
+	 * tai=false
 	 * 
 	 * @param styleCar
 	 * @return
@@ -126,8 +121,7 @@ public class StyleCarDAO extends BaseDAO{
 		ResultSet rs = null;
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-					.prepareStatement(sql);
+			PreparedStatement restmt = connection.prepareStatement(sql);
 			restmt.setString(1, styleCar);
 			rs = restmt.executeQuery();
 		} catch (ClassNotFoundException e) {

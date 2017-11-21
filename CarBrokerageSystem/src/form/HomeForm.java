@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.struts.action.ActionForm;
 
+import model.bean.Car;
 import model.bean.Producer;
 
 public class HomeForm extends ActionForm {
@@ -12,6 +13,15 @@ public class HomeForm extends ActionForm {
 	private String userName;
 	private String fullName;
 	private ArrayList<Producer> listProducer;
+	private ArrayList<Car> listCarHighlight;
+
+	public ArrayList<Car> getListCarHighlight() {
+		return listCarHighlight;
+	}
+
+	public void setListCarHighlight(ArrayList<Car> listCarHighlight) {
+		this.listCarHighlight = listCarHighlight;
+	}
 
 	public ArrayList<Producer> getListProducer() {
 		return listProducer;

@@ -8,19 +8,17 @@ import java.util.ArrayList;
 
 import model.bean.Producer;
 
-public class ProducerDAO extends BaseDAO{
-	
+public class ProducerDAO extends BaseDAO {
+
 	/**
 	 * Ham tra ve danh sach cac hang xe va so luong xe trong hang
 	 * 
 	 * @return
 	 */
 	public ArrayList<Producer> getListProducer() {
-		String sql = " SELECT p.ProducerID, p.ProducerName, count = COUNT(c.CarID) " +
-				" FROM [Producer] p " +
-				" LEFT JOIN [Car] as c on c.ProducerID = p.ProducerID " +
-				" GROUP BY p.ProducerID, p.ProducerName  " +
-				" ORDER BY p.ProducerName ";
+		String sql = " SELECT p.ProducerID, p.ProducerName, count = COUNT(c.CarID) " + " FROM [Producer] p "
+				+ " LEFT JOIN [Car] as c on c.ProducerID = p.ProducerID " + " GROUP BY p.ProducerID, p.ProducerName  "
+				+ " ORDER BY p.ProducerName ";
 		ResultSet rs = null;
 		try {
 			Connection connection = getMyConnection();
@@ -47,30 +45,29 @@ public class ProducerDAO extends BaseDAO{
 		}
 		return list;
 	}
-	
+
 	/**
 	 * Ham them ten mot hang xe
 	 * 
 	 * @param producerName
 	 */
 	public void addProducer(String producerName) {
-		String sql=	" INSERT INTO [Producer](ProducerName) VALUES (?) ";
+		String sql = " INSERT INTO [Producer](ProducerName) VALUES (?) ";
 
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-			.prepareStatement(sql);
-			
+			PreparedStatement restmt = connection.prepareStatement(sql);
+
 			restmt.setString(1, producerName);
-			
+
 			restmt.executeUpdate();
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Kiem tra ten hang xe da ton tai hay khong: ton tai=true, khong ton tai=false
 	 * 
@@ -82,8 +79,7 @@ public class ProducerDAO extends BaseDAO{
 		ResultSet rs = null;
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-					.prepareStatement(sql);
+			PreparedStatement restmt = connection.prepareStatement(sql);
 			restmt.setString(1, producerName);
 			rs = restmt.executeQuery();
 		} catch (ClassNotFoundException e) {
@@ -101,28 +97,27 @@ public class ProducerDAO extends BaseDAO{
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Xoa mot hang xe oto
 	 * 
 	 * @param producerID
 	 */
-	public void deleteProducer (String producerID) {
-		String sql=	"DELETE FROM [Producer] WHERE ProducerID = ?";
+	public void deleteProducer(String producerID) {
+		String sql = "DELETE FROM [Producer] WHERE ProducerID = ?";
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-			.prepareStatement(sql);
+			PreparedStatement restmt = connection.prepareStatement(sql);
 			restmt.setString(1, producerID);
-			
+
 			restmt.executeUpdate();
-		} catch (ClassNotFoundException e){
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Ham sua ten mot hang san xuat oto
 	 * 
@@ -130,22 +125,52 @@ public class ProducerDAO extends BaseDAO{
 	 * @param producerName
 	 */
 	public void editProducer(String producerID, String producerName) {
-		String sql=	" UPDATE [Producer] SET ProducerName = ? WHERE ProducerID = ? ";
+		String sql = " UPDATE [Producer] SET ProducerName = ? WHERE ProducerID = ? ";
 
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-			.prepareStatement(sql);
-			
+			PreparedStatement restmt = connection.prepareStatement(sql);
+
 			restmt.setString(1, producerName);
 			restmt.setString(2, producerID);
-			
+
 			restmt.executeUpdate();
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Ham tra ve ten cua hang xe theo id
+	 * 
+	 * @param producerID
+	 * @return
+	 */
+	public String getProducerName(String producerID) {
+		String sql = " SELECT ProducerName " + " FROM [Producer] " + " WHERE ProducerID = ? ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, producerID);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		String producerName = "";
+		try {
+			while (rs.next()) {
+				producerName = rs.getString("ProducerName");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return producerName;
+	}
+
 }

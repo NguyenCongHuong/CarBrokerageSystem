@@ -13,6 +13,8 @@ public class Car {
 	private String styleCar;
 	private String carHighlight;
 	private String styleHighlight;
+	private String carImage;
+	private String carBanner;
 	private String size;
 	private String wheelbase;
 	private String weight;
@@ -51,6 +53,22 @@ public class Car {
 	private String childSafetyLock;
 	private String seatBelt;
 	private String airbag;
+
+	public String getCarImage() {
+		return carImage;
+	}
+
+	public void setCarImage(String carImage) {
+		this.carImage = carImage;
+	}
+
+	public String getCarBanner() {
+		return carBanner;
+	}
+
+	public void setCarBanner(String carBanner) {
+		this.carBanner = carBanner;
+	}
 
 	public String getProducerID() {
 		return producerID;

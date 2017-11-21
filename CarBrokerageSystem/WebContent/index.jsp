@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -32,6 +36,40 @@
 	<jsp:include page="/navigationUser.jsp"></jsp:include>
 	<!-- menu bar end -->
 	
+	<section id="slider"><!--slider-->
+		<div class="container-poster">
+			<div class="row" style="margin-right:0px; margin-left:0px">
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+							<li data-target="#slider-carousel" data-slide-to="1"></li>
+							<li data-target="#slider-carousel" data-slide-to="2"></li>
+						</ol>
+						
+						<div class="carousel-inner">
+							<div class="item active">
+								<img src="images\home\alphard-banner.jpg" style="width: 100%">
+							</div>
+							<div class="item">
+								<img src="images\home\fortuner-banner.png" style="width: 100%">
+							</div>
+							<div class="item">
+								<img src="images\home\vios-banner.jpg" style="width: 100%">
+							</div>
+							
+						</div>
+						
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+			</div>
+		</div>
+	</section><!--/slider-->
+	
 	<section>
 		<div class="container">
 			<div class="row">
@@ -43,60 +81,31 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">NỔI BẬT</h2>
+						
+						<logic:iterate name="homeForm" property="listCarHighlight" id="listCarHighlight">
+						<bean:define id="carImage" name="listCarHighlight" property="carImage"></bean:define>
+						<bean:define id="carName" name="listCarHighlight" property="carName"></bean:define>
+						<bean:define id="carID" name="listCarHighlight" property="carID"></bean:define>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="images/home/altis1.png" alt="" />
-											<h2>717.000.000 VND</h2>
-											<p>ALTIS 1.8G</p>
+											<img src="${carImage }" alt="${carName }" />
+											<h2><bean:write name="listCarHighlight" property="price"/></h2>
+											<p><bean:write name="listCarHighlight" property="carName"/></p>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2>717.000.000 VND</h2>
-												<p>ALTIS 1.8G</p>
+												<h2><bean:write name="listCarHighlight" property="price"/></h2>
+												<p><bean:write name="listCarHighlight" property="carName"/></p>
 												<a href="carDetails.html" class="btn btn-default add-to-cart">Xem chi tiết</a>
 											</div>
 										</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/home/fortuner1.png" alt="" />
-										<h2>1.149.000.000 VND</h2>
-										<p>Fortuner 2.7V </p>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-										    <h2>1.149.000.000 VND</h2>
-										    <p>Fortuner 2.7V </p>
-											<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/home/camry1.png" alt="" />
-										<h2>1.283.000.000 VND</h2>
-										<p>Camry 2.5 Q</p>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>1.283.000.000 VND</h2>
-										    <p>Camry 2.5 Q</p>
-											<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						</logic:iterate>
+						
 					</div><!--features_items-->
 					
 					<div class="category-tab"><!--category-tab-->
