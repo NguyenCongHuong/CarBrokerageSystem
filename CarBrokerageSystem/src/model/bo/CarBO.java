@@ -17,7 +17,7 @@ public class CarBO {
 		return carDAO.getListCarHighlight();
 	}
 	
-	public ArrayList<Car> getListFengShuiCar(int fireElement) {
-		return carDAO.getListFengShuiCar(fireElement);
+	public ArrayList<Car> getListFengShuiCar(int fireElement, String styleCarID, String typeCarID) {
+		return carDAO.getListFengShuiCar(fireElement, styleCarID, typeCarID);
 	}
 }

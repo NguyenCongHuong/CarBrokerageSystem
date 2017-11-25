@@ -76,8 +76,8 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
-								<li><html:link action="/fengShui">Phong Thuỷ</html:link></li>
+								<li><html:link action="/home">Trang chủ</html:link></li>
+								<li><html:link action="/fengShui">Phong Thủy</html:link></li>
 								<li><a href="index.html" >So Sánh Xe</a></li>
 							</ul>
 						</div>

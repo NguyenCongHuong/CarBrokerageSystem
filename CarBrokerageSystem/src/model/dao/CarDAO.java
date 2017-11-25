@@ -92,31 +92,48 @@ public class CarDAO extends BaseDAO {
 	}
 
 	/**
-	 * ham tra ve danh sach xe theo ngu hanh
+	 * ham tra ve danh sach xe theo ngu hanh, phong cach xe, loai xe
 	 * 
 	 * @param fireElement
 	 * @return
 	 */
-	public ArrayList<Car> getListFengShuiCar(int fireElement) {
+	public ArrayList<Car> getListFengShuiCar(int fireElement, String styleCarID, String typeCarID) {
 
 		String sql = " SELECT c.CarID, c.CarName, c.Price, f.CarImage " + " FROM [Car] c "
-				+ " INNER JOIN [FiveElement] as f on c.CarID = f.CarID ";
-		if (fireElement == 0) {
-			sql += " WHERE f.Metal = 1 ORDER BY c.CarName ";
-		} else if (fireElement == 1) {
-			sql += " WHERE f.Water = 1 ORDER BY c.CarName ";
-		} else if (fireElement == 2) {
-			sql += " WHERE f.Fire = 1 ORDER BY c.CarName ";
-		} else if (fireElement == 3) {
-			sql += " WHERE f.Earth = 1 ORDER BY c.CarName ";
-		} else
-			sql += " WHERE f.Wood = 1 ORDER BY c.CarName ";
+				+ " INNER JOIN [FiveElement] as f on c.CarID = f.CarID "
+				+ " INNER JOIN [StyleCar] as s on c.StyleCarID = s.StyleCarID "
+				+ " INNER JOIN [TypeCar] as t on c.TypeCarID = t.TypeCarID " + " WHERE f."
+				+ Constants.FIVE_ELEMENTS_EN[fireElement] + " = 1";
+		String sqlOrderBy = " ORDER BY c.CarHighlight desc, c.CarName ";
+
 		ResultSet rs = null;
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection.prepareStatement(sql);
+			PreparedStatement restmt = null;
 
-			rs = restmt.executeQuery();
+			if ("0".equals(styleCarID) == true && "0".equals(typeCarID) == true) {
+				sql += sqlOrderBy;
+				System.out.println(sql);
+				restmt = connection.prepareStatement(sql);
+			} else if ("0".equals(styleCarID) == true && "0".equals(typeCarID) == false) {
+				sql += " and c.TypeCarID = ? " + sqlOrderBy;
+				System.out.println(sql);
+				restmt = connection.prepareStatement(sql);
+				restmt.setString(1, typeCarID);
+			} else if ("0".equals(styleCarID) == false && "0".equals(typeCarID) == true) {
+				sql += " and c.StyleCarID = ? " + sqlOrderBy;
+				System.out.println(sql);
+				restmt = connection.prepareStatement(sql);
+				restmt.setString(1, styleCarID);
+			} else {
+				sql += " and c.StyleCarID = ? and c.TypeCarID = ? " +sqlOrderBy;
+				System.out.println(sql);
+				restmt = connection.prepareStatement(sql);
+				restmt.setString(1, styleCarID);
+				restmt.setString(2, typeCarID);
+			}
+
+				rs = restmt.executeQuery();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

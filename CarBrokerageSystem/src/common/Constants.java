@@ -57,7 +57,8 @@ public class Constants {
 	public static final String CAN[] = { "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý" };
 	public static final String CHI[] = { "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất",
 			"Hợi" };
-	public static final String FIVE_ELEMENTS[] = { "Kim", "Thủy", "Hỏa", "Thổ", "Mộc" };
+	public static final String FIVE_ELEMENTS_VI[] = { "Kim", "Thủy", "Hỏa", "Thổ", "Mộc" };
+	public static final String FIVE_ELEMENTS_EN[] = { "Metal", "Water", "Fire", "Earth", "Wood" };
 
 	/**
 	 * Loai quyen dang nhap

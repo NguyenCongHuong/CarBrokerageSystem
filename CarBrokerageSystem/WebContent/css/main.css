@@ -13,6 +13,10 @@ body {
   font-weight:400px;
 }
 
+.justify p{
+  text-align: justify;
+}
+
 ul li {
   list-style: none;
 }

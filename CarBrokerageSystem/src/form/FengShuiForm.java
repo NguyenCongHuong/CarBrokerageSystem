@@ -12,13 +12,40 @@ public class FengShuiForm extends ActionForm {
 
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<StyleCar> listStyleCar;
 	private String birthday;
 	private String lunarDay;
-	private ArrayList<Car> listCar;
 	private String styleCarID;
-	private ArrayList<TypeCar> listTypeCar;
 	private String typeCarID;
+	private String information;
+	private String canChi;
+	private String element;
+	private ArrayList<TypeCar> listTypeCar;
+	private ArrayList<StyleCar> listStyleCar;
+	private ArrayList<Car> listCar;
+
+	public String getElement() {
+		return element;
+	}
+
+	public void setElement(String element) {
+		this.element = element;
+	}
+
+	public String getCanChi() {
+		return canChi;
+	}
+
+	public void setCanChi(String canChi) {
+		this.canChi = canChi;
+	}
+
+	public String getInformation() {
+		return information;
+	}
+
+	public void setInformation(String information) {
+		this.information = information;
+	}
 
 	public ArrayList<TypeCar> getListTypeCar() {
 		return listTypeCar;

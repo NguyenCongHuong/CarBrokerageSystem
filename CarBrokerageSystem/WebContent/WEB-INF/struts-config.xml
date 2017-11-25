@@ -101,7 +101,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<action name="fengShuiForm"
 			path="/fengShui" scope="session" type="action.FengShuiAction">
 			<forward name="fengShui" path="/fengShui.jsp" />
-			<forward name="fengShuiCar" path="/recommendCar.jsp" />	
+			<forward name="fengShuiCar" path="/recommendCar.jsp"/>	
 		</action>
 		
 	</action-mappings>
