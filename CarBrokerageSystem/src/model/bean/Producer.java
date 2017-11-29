@@ -5,7 +5,7 @@ public class Producer {
 	private String producerID;
 	private String producerName;
 	private String numberCar;
-	private String action;
+	private String active;
 
 	public String getProducerID() {
 		return producerID;
@@ -31,12 +31,12 @@ public class Producer {
 		this.numberCar = numberCar;
 	}
 
-	public String getAction() {
-		return action;
+	public String getActive() {
+		return active;
 	}
 
-	public void setAction(String action) {
-		this.action = action;
+	public void setActive(String active) {
+		this.active = active;
 	}
 
 }

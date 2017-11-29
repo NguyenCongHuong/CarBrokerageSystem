@@ -28,4 +28,8 @@ public class StyleCarBO {
 	public boolean checkStyleName(String styleCar) {
 		return styleCarDAO.checkStyleName(styleCar);
 	}
+
+	public ArrayList<StyleCar> getListStyleHighlight() {
+		return styleCarDAO.getListStyleHighlight();
+	}
 }

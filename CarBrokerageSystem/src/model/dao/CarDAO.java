@@ -42,7 +42,8 @@ public class CarDAO extends BaseDAO {
 				car.setCarID(rs.getString("CarID"));
 				car.setCarName(rs.getString("CarName"));
 				car.setProducerName(rs.getString("ProducerName"));
-				car.setPrice(Utils.formatCurrency(rs.getString("Price")) + " " + Constants.CURRENCY);
+				car.setPrice(Utils.formatCurrency(rs.getString("Price")));
+				car.setMoney(Constants.CURRENCY);
 				car.setCarHighlight(rs.getString("CarHighlight"));
 				car.setStyleHighlight(rs.getString("StyleHighlight"));
 				car.setCarImage(Constants.LINK_SHOW_IMG + "" + rs.getString("CarImage"));
@@ -81,7 +82,8 @@ public class CarDAO extends BaseDAO {
 				car = new Car();
 				car.setCarID(rs.getString("CarID"));
 				car.setCarName(rs.getString("CarName"));
-				car.setPrice(Utils.formatCurrency(rs.getString("Price")) + " " + Constants.CURRENCY);
+				car.setPrice(Utils.formatCurrency(rs.getString("Price")));
+				car.setMoney(Constants.CURRENCY);
 				car.setCarImage(Constants.LINK_SHOW_IMG + "" + rs.getString("CarImage"));
 				list.add(car);
 			}
@@ -126,14 +128,14 @@ public class CarDAO extends BaseDAO {
 				restmt = connection.prepareStatement(sql);
 				restmt.setString(1, styleCarID);
 			} else {
-				sql += " and c.StyleCarID = ? and c.TypeCarID = ? " +sqlOrderBy;
+				sql += " and c.StyleCarID = ? and c.TypeCarID = ? " + sqlOrderBy;
 				System.out.println(sql);
 				restmt = connection.prepareStatement(sql);
 				restmt.setString(1, styleCarID);
 				restmt.setString(2, typeCarID);
 			}
 
-				rs = restmt.executeQuery();
+			rs = restmt.executeQuery();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -149,7 +151,8 @@ public class CarDAO extends BaseDAO {
 					car = new Car();
 					car.setCarID(rs.getString("CarID"));
 					car.setCarName(rs.getString("CarName"));
-					car.setPrice(Utils.formatCurrency(rs.getString("Price")) + " " + Constants.CURRENCY);
+					car.setPrice(Utils.formatCurrency(rs.getString("Price")));
+					car.setMoney(Constants.CURRENCY);
 					car.setCarImage(Constants.LINK_SHOW_IMG + "" + rs.getString("CarImage"));
 					list.add(car);
 					count += 1;
@@ -161,4 +164,46 @@ public class CarDAO extends BaseDAO {
 		}
 		return list;
 	}
+	
+	/**
+	 * Ham tra ve tat ca xe noi co phong cach noi bat trong tung phong cach
+	 * 
+	 * @param styleCarID
+	 * @return
+	 */
+	public ArrayList<Car> getListCarByStyle(String styleCarID) {
+		String sql = " SELECT c.CarID, c.CarName, c.Price, CarImage = (select top 1 CarImage from [FiveElement] where CarID = c.CarID) "
+				+ " FROM [Car] c " + " INNER JOIN [StyleCar] as st on c.StyleCarID = st.StyleCarID"
+				+ " INNER JOIN [FiveElement] as f on c.CarID = f.CarID"
+				+ " WHERE st.StyleCarID = ? and c.StyleHighlight = 1 " + " ORDER BY c.CarName ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, styleCarID);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		ArrayList<Car> list = new ArrayList<Car>();
+		Car car;
+		try {
+			while (rs.next()) {
+				car = new Car();
+				car.setCarID(rs.getString("CarID"));
+				car.setCarName(rs.getString("CarName"));
+				car.setPrice(Utils.formatCurrency(rs.getString("Price")));
+				car.setMoney(Constants.CURRENCY);
+				car.setCarImage(Constants.LINK_SHOW_IMG + "" + rs.getString("CarImage"));
+				list.add(car);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

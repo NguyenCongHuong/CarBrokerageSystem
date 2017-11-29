@@ -6,6 +6,7 @@ import org.apache.struts.action.ActionForm;
 
 import model.bean.Car;
 import model.bean.Producer;
+import model.bean.StyleCar;
 
 public class HomeForm extends ActionForm {
 
@@ -14,6 +15,15 @@ public class HomeForm extends ActionForm {
 	private String fullName;
 	private ArrayList<Producer> listProducer;
 	private ArrayList<Car> listCarHighlight;
+	private ArrayList<StyleCar> listStyleHighlight;
+
+	public ArrayList<StyleCar> getListStyleHighlight() {
+		return listStyleHighlight;
+	}
+
+	public void setListStyleHighlight(ArrayList<StyleCar> listStyleHighlight) {
+		this.listStyleHighlight = listStyleHighlight;
+	}
 
 	public ArrayList<Car> getListCarHighlight() {
 		return listCarHighlight;

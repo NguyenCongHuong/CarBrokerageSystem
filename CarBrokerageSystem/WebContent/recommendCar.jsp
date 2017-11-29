@@ -158,15 +158,11 @@
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                   <img src="${carImage }" alt="${carName }" />
-                                  <h2><bean:write name="listCar" property="price"/></h2>
+                                  <h2><bean:write name="listCar" property="price"/>
+								  	<p style="color: #ff0000; font-size: 20px "><b><bean:write name="listCar" property="money"/></b></p>
+								  </h2>
 								  <p><bean:write name="listCar" property="carName"/></p>
-                                </div>
-                                <div class="product-overlay">
-                                  <div class="overlay-content">
-                                    <h2><bean:write name="listCar" property="price"/></h2>
-									<p><bean:write name="listCar" property="carName"/></p>
-									<a href="carDetails.html" class="btn btn-default add-to-cart">Xem chi tiết</a>
-                                  </div>
+								  <a href="carDetails.html" class="btn btn-default add-to-cart">Xem chi tiết</a>
                                 </div>
                             </div>
                           </div>

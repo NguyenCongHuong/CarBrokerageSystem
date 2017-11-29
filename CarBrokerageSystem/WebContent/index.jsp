@@ -90,13 +90,17 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="${carImage }" alt="${carName }" />
-											<h2><bean:write name="listCarHighlight" property="price"/></h2>
+											<img src="${carImage }" title="${carName }" />
+											<h2><bean:write name="listCarHighlight" property="price"/>
+												<p style="color: #ff0000; font-size: 20px "><b><bean:write name="listCarHighlight" property="money"/></b></p>
+											</h2>
 											<p><bean:write name="listCarHighlight" property="carName"/></p>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2><bean:write name="listCarHighlight" property="price"/></h2>
+												<h2><bean:write name="listCarHighlight" property="price"/>
+													<p style="font-size: 20px"><b><bean:write name="listCarHighlight" property="money"/></b></p>
+												</h2>
 												<p><bean:write name="listCarHighlight" property="carName"/></p>
 												<a href="carDetails.html" class="btn btn-default add-to-cart">Xem chi tiết</a>
 											</div>
@@ -111,135 +115,76 @@
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#sedan" data-toggle="tab">Sedan</a></li>
-								<li><a href="#hatchback" data-toggle="tab">Hatchback</a></li>
-								<li><a href="#suv" data-toggle="tab">SUV</a></li>
-								<li><a href="#truck" data-toggle="tab">Truck</a></li>
-								<li><a href="#van" data-toggle="tab">Van</a></li>
+							<logic:iterate name="homeForm" property="listStyleHighlight" id="listStyleHighlight">
+							<bean:define id="styleCarID" name="listStyleHighlight" property="styleCarID"></bean:define>
+								<logic:equal name="listStyleHighlight" property="active" value="1">
+									<li class="active">
+										<a href="#${styleCarID }" data-toggle="tab"> 
+											<bean:write name="listStyleHighlight" property="styleCar" /> 
+										</a>
+									</li>
+								</logic:equal>
+								
+								<logic:notEqual name="listStyleHighlight" property="active" value="1">
+									<li>
+										<a href="#${styleCarID }" data-toggle="tab"> 
+											<bean:write name="listStyleHighlight" property="styleCar" /> 
+										</a>
+									</li>
+								</logic:notEqual>
+								
+							</logic:iterate>
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="Sedan" >
-								<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-									<div class="carousel-inner">
-										<div class="item active">
-											<div class="col-sm-3">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/vios1.png" alt="" />
-															<h2>644.000.000 VND</h2>
-															<p>Vios TRD Sportivo 2017</p>
-															<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/fortuner1.png" alt="" />
-															<h2>753.000.000 VND</h2>
-															<p>Innova 2.0E</p>
-															<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/fortuner1.png" alt="" />
-															<h2>981.000.000 VND</h2>
-															<p>Fortuner 2.4G</p>
-															<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/fortuner1.png" alt="" />
-															<h2>1.018.000.000 VND</h2>
-															<p>Camry 2.0 E</p>
-															<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="item">
-											<div class="col-sm-3">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/vios1.png" alt="" />
-															<h2>644.000.000 VND</h2>
-															<p>Vios TRD Sportivo 2017</p>
-															<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/fortuner1.png" alt="" />
-															<h2>753.000.000 VND</h2>
-															<p>Innova 2.0E</p>
-															<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/fortuner1.png" alt="" />
-															<h2>981.000.000 VND</h2>
-															<p>Fortuner 2.4G</p>
-															<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/fortuner1.png" alt="" />
-															<h2>1.018.000.000 VND</h2>
-															<p>Camry 2.0 E</p>
-															<a href="#" class="btn btn-default add-to-cart">Xem chi tiết</a>
-														</div>
-														
-													</div>
-												</div>
+						<logic:iterate name="homeForm" property="listStyleHighlight" id="styleHighlight">
+						<bean:define id="styleCarID" name="styleHighlight" property="styleCarID"></bean:define>
+						<logic:equal name="styleHighlight" property="active" value="1">
+							<div class="tab-pane fade active in" id="${styleCarID }" >
+							<logic:iterate name="styleHighlight" property="listCar" id="car">
+							<bean:define id="carImage" name="car" property="carImage"></bean:define>
+							<bean:define id="carName" name="car" property="carName"></bean:define>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="${carImage }" title="${carName }" />
+												<h2><bean:write name="car" property="price"/>
+													<p style="color: #ff0000; font-size: 20px "><b><bean:write name="car" property="money"/></b></p>
+												</h2>
+												<p><bean:write name="car" property="carName"/></p>
+												<a class="btn btn-default add-to-cart">Xem chi tiết</a>
 											</div>
 										</div>
 									</div>
-									<a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-										<i class="fa fa-angle-left"></i>
-									  </a>
-									  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-										<i class="fa fa-angle-right"></i>
-									  </a>
 								</div>
+							</logic:iterate>
 							</div>
-
+						</logic:equal>
+						<logic:notEqual name="styleHighlight" property="active" value="1">
+							<div class="tab-pane fade" id="${styleCarID }" >
+							<logic:iterate name="styleHighlight" property="listCar" id="car">
+							<bean:define id="carImage" name="car" property="carImage"></bean:define>
+							<bean:define id="carName" name="car" property="carName"></bean:define>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="${carImage }" title="${carName }" />
+												<h2><bean:write name="car" property="price"/>
+													<p style="color: #ff0000; font-size: 20px "><b><bean:write name="car" property="money"/></b></p>
+												</h2>
+												<p><bean:write name="car" property="carName"/></p>
+												<a class="btn btn-default add-to-cart">Xem chi tiết</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</logic:iterate>
+							</div>
+						</logic:notEqual>
+							
+						</logic:iterate>
 						</div>
 					</div><!--/category-tab-->
 					

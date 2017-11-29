@@ -53,6 +53,15 @@ public class Car {
 	private String childSafetyLock;
 	private String seatBelt;
 	private String airbag;
+	private String money;
+
+	public String getMoney() {
+		return money;
+	}
+
+	public void setMoney(String money) {
+		this.money = money;
+	}
 
 	public String getCarImage() {
 		return carImage;
