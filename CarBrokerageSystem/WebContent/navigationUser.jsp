@@ -34,7 +34,7 @@
 				<div class="row" style="padding-bottom: 10px">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo-web.png" alt="" /></a>
+							<html:link action="/home"><img src="images/home/logo-web.png" alt="" /></html:link>
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -64,7 +64,7 @@
 
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
-				<div class="row">
+				<div class="row" id="hr">
 					<div class="col-sm-9">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -78,13 +78,15 @@
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><html:link action="/home">Trang chủ</html:link></li>
 								<li><html:link action="/fengShui">Phong Thủy</html:link></li>
-								<li><a href="index.html" >So Sánh Xe</a></li>
+								<li><html:link action="/compare">So Sánh Xe</html:link></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<html:form method="post" action="/search">
+								<input type="text" placeholder="Tìm kiếm" name="searchString" onsubmit="this.form.submit()"/>
+							</html:form>
 						</div>
 					</div>
 				</div>

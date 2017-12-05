@@ -74,4 +74,27 @@ public class OrderDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void addOrder(String orderer, String email, String phoneNumber, String address, String orderDate, String carID, String userName) {
+		String sql = " INSERT INTO [Order](Orderer, Email, PhoneNumber, Address, OrderDate, CarID, Seen, Contacted, UserName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, orderer);
+			restmt.setString(2, email);
+			restmt.setString(3, phoneNumber);
+			restmt.setString(4, address);
+			restmt.setString(5, orderDate);
+			restmt.setString(6, carID);
+			restmt.setString(7, "1");
+			restmt.setString(8, "0");
+			restmt.setString(9, userName);
+
+			restmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

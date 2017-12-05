@@ -16,4 +16,8 @@ public class OrderBO {
 	public void deleteOrder(String orderID) {
 		orderDAO.deleteOrder(orderID);
 	}
+	
+	public void addOrder(String orderer, String email, String phoneNumber, String address, String orderDate, String carID, String userName) {
+		orderDAO.addOrder(orderer, email, phoneNumber, address, orderDate, carID, userName);
+	}
 }

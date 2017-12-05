@@ -53,7 +53,7 @@
 												<img src="${carImage}" alt="${carName}" />
 												<h2><bean:write name="listCar" property="price"/></h2>
 												<p><bean:write name="listCar" property="carName"/></p>
-												<html:link action="/carInformation?carID=${carID}" styleClass="btn btn-default add-to-cart">Xem chi tiết</html:link>
+												<html:link action="/carDetail?carID=${carID }" styleClass="btn btn-default add-to-cart">Xem chi tiết</html:link>
 											</div>
 										</div>
 									</div>
@@ -76,6 +76,15 @@
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
     <script>
+    $(function () {
+  	  $('#hr').css({
+  	    	'padding-bottom': '10px',
+  	        'border-bottom': '1px solid #f5f5f5',
+  	        'margin-left': '0px',
+  	        'margin-right': '0px'
+  	    })
+    })
+    
 	function myFunction(id) {
 	    var x = document.getElementById(id);
 	    if (x.className.indexOf("show") == -1) {
@@ -88,6 +97,7 @@
 	        x.previousElementSibling.className.replace("w3-red", "w3-black");
 	    }
 	}
+	
 	</script>
 </body>
 </html>

@@ -13,6 +13,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<form-bean name="styleForm" type="form.StyleForm" />
 		<form-bean name="homeForm" type="form.HomeForm" />
 		<form-bean name="fengShuiForm" type="form.FengShuiForm" />
+		<form-bean name="carForm" type="form.CarForm" />
 	</form-beans>
 	
 	<global-forwards>
@@ -94,14 +95,34 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		</action>
 		
 		<action name="listCarForm"
-			path="/listCar" scope="session" type="action.ShowCarAction">
+			path="/listCar" scope="request" type="action.ShowCarAction">
 			<forward name="listCar" path="/showCar.jsp" />
 		</action>
 		
 		<action name="fengShuiForm"
-			path="/fengShui" scope="session" type="action.FengShuiAction">
+			path="/fengShui" scope="request" type="action.FengShuiAction">
 			<forward name="fengShui" path="/fengShui.jsp" />
 			<forward name="fengShuiCar" path="/recommendCar.jsp"/>	
+		</action>
+		
+		<action name="carForm"
+			path="/carDetail" scope="request" type="action.CarDetailAction">
+			<forward name="carDetail" path="/carDetail.jsp" />
+		</action>
+		
+		<action name="orderForm"
+			path="/order" scope="request" type="action.OrderAction">
+			<forward name="order" path="/carDetail.do" />
+		</action>
+		
+		<action name="listCarForm"
+			path="/search" scope="request" type="action.SearchAction">
+			<forward name="search" path="/search.jsp" />
+		</action>
+		
+		<action name="carForm"
+			path="/compare" scope="request" type="action.CompareAction">
+			<forward name="compare" path="/compare.jsp" />
 		</action>
 		
 	</action-mappings>

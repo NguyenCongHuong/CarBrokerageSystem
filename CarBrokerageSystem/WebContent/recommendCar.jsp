@@ -162,7 +162,7 @@
 								  	<p style="color: #ff0000; font-size: 20px "><b><bean:write name="listCar" property="money"/></b></p>
 								  </h2>
 								  <p><bean:write name="listCar" property="carName"/></p>
-								  <a href="carDetails.html" class="btn btn-default add-to-cart">Xem chi tiết</a>
+								  <html:link action="/carDetail?carID=${carID }" styleClass="btn btn-default add-to-cart">Xem chi tiết</html:link>
                                 </div>
                             </div>
                           </div>
@@ -172,7 +172,7 @@
                       </div><!--features_items-->
                     </div>
 
-                    <a  class="pull-right" href="">Xem thêm>></a>
+                    <!-- <a  class="pull-right" href="">Xem thêm>></a> -->
 
                   </div>
                 </div>

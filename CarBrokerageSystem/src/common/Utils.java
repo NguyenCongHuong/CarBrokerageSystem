@@ -183,6 +183,28 @@ public class Utils {
 		}
 		return info;
 	}
+	
+	public static boolean isNumber(String str) {
+		char i;
+		for (i = 32; i <= 47; i++) {
+			for (int j = 0; j < str.length(); j++) {
+				if (str.charAt(j) == 44 || str.charAt(j) == 46) {
+					return true;
+				}
+				if (str.charAt(j) == i) {
+					return false;
+				}
+			}
+		}
+		for (i = 58; i <= 126; i++) {
+			for (int j = 0; j < str.length(); j++) {
+				if (str.charAt(j) == i) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 
 	public static void main(String[] args) {
 		String year = "" + 1994;

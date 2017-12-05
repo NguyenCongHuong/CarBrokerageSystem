@@ -1,59 +1,88 @@
 package model.bean;
 
+import java.util.ArrayList;
+
 public class Car {
-	private String carID;
-	private String carName;
-	private String price;
-	private String warranty;
-	private String producerID;
-	private String producerName;
-	private String typeCarID;
-	private String typeCar;
-	private String styleCarID;
-	private String styleCar;
-	private String carHighlight;
-	private String styleHighlight;
-	private String carImage;
-	private String carBanner;
-	private String size;
-	private String wheelbase;
-	private String weight;
-	private String maxWeight;
-	private String engineType;
-	private String torque;
-	private String enginePower;
-	private String topSpeed;
-	private String fuelTankCapacity;
-	private String fuel;
-	private String fuelConsumption;
-	private String emissionStandard;
-	private String gear;
-	private String frontBrake;
-	private String rearBrake;
-	private String frontFoglamp;
-	private String rearFoglamp;
-	private String rearviewMirrorOutside;
-	private String winscreenWiper;
-	private String antenna;
-	private String doorHandle;
-	private String airConditioner;
-	private String rearviewMirrorInside;
-	private String sunroof;
-	private String seatType;
-	private String seat;
-	private String sunshade;
-	private String cupHolder;
-	private String speakerType;
-	private String dics;
-	private String numberSpeaker;
-	private String usb;
-	private String bluetooth;
-	private String electronicStabilityControl;
-	private String brakelight;
-	private String childSafetyLock;
-	private String seatBelt;
-	private String airbag;
-	private String money;
+	private String carID = "";
+	private String carName = "";
+	private String price = "";
+	private String warranty = "";
+	private String producerID = "";
+	private String producerName = "";
+	private String typeCarID = "";
+	private String typeCar = "";
+	private String styleCarID = "";
+	private String styleCar = "";
+	private String carHighlight = "";
+	private String styleHighlight = "";
+	private String carImage = "";
+	private String carBanner = "";
+	private String size = "";
+	private String wheelbase = "";
+	private String weight = "";
+	private String maxWeight = "";
+	private String engineType = "";
+	private String torque = "";
+	private String enginePower = "";
+	private String topSpeed = "";
+	private String fuelTankCapacity = "";
+	private String fuel = "";
+	private String fuelConsumption = "";
+	private String emissionStandard = "";
+	private String gear = "";
+	private String frontBrake = "";
+	private String rearBrake = "";
+	private String frontFoglamp = "";
+	private String rearFoglamp = "";
+	private String rearviewMirrorOutside = "";
+	private String winscreenWiper = "";
+	private String antenna = "";
+	private String doorHandle = "";
+	private String airConditioner = "";
+	private String rearviewMirrorInside = "";
+	private String sunroof = "";
+	private String seatType = "";
+	private String seat = "";
+	private String sunshade = "";
+	private String cupHolder = "";
+	private String speakerType = "";
+	private String dics = "";
+	private String numberSpeaker = "";
+	private String usb = "";
+	private String bluetooth = "";
+	private String electronicStabilityControl = "";
+	private String brakelight = "";
+	private String childSafetyLock = "";
+	private String seatBelt = "";
+	private String airbag = "";
+	private String money = "";
+	private String safe = "";
+	private ArrayList<FiveElement> listColor;
+	private String id = "";
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getSafe() {
+		return safe;
+	}
+
+	public void setSafe(String safe) {
+		this.safe = safe;
+	}
+
+	public ArrayList<FiveElement> getListColor() {
+		return listColor;
+	}
+
+	public void setListColor(ArrayList<FiveElement> listColor) {
+		this.listColor = listColor;
+	}
 
 	public String getMoney() {
 		return money;

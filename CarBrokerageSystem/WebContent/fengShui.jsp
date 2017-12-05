@@ -94,7 +94,7 @@
 
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <input type="text" id="giaTri2" name ="lunarDay" class="input-info" style="color: #000000">
+                  <input type="hidden" id="giaTri2" name ="lunarDay" class="input-info" style="color: #000000">
                 </div>              
               </div>
 

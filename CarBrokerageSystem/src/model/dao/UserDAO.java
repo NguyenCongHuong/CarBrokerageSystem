@@ -50,7 +50,7 @@ public class UserDAO extends BaseDAO {
 	 * @return
 	 */
 	public User getUser(String userName) {
-		String sql = "SELECT FullName, Type, Email, Password, PhoneNumber, Address, PasswordEmail "
+		String sql = "SELECT FullName, Type, Email, Password, PhoneNumber, Address "
 				+ " FROM [User] WHERE UserName = ? ";
 		ResultSet rs = null;
 
@@ -77,7 +77,6 @@ public class UserDAO extends BaseDAO {
 				user.setPassword(rs.getString("Password"));
 				user.setPhoneNumber(rs.getString("PhoneNumber"));
 				user.setAddress(rs.getString("Address"));
-				user.setPasswordEmail(rs.getString("PasswordEmail"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

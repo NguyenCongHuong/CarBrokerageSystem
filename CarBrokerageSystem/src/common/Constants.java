@@ -34,7 +34,7 @@ public class Constants {
 	/**
 	 * Chuoi link upload anh
 	 */
-	public static final String LINK_SHOW_IMG = "images/Car/";
+	public static final String LINK_SHOW_IMG = "images/car/";
 	public static final String LINK_UPLOAD_IMG = "E:\\Git clone\\CarBrokerageSystem\\CarBrokerageSystem\\WebContent\\";
 
 	/**

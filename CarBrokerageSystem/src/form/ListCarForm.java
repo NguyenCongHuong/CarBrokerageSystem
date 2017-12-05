@@ -15,6 +15,33 @@ public class ListCarForm extends ActionForm {
 	private ArrayList<Car> listCar;
 	private String producerID;
 	private String producerName;
+	private String searchString;
+	private String nofi;
+	private ArrayList<Car> listCarSearch;
+
+	public String getSearchString() {
+		return searchString;
+	}
+
+	public void setSearchString(String searchString) {
+		this.searchString = searchString;
+	}
+
+	public String getNofi() {
+		return nofi;
+	}
+
+	public void setNofi(String nofi) {
+		this.nofi = nofi;
+	}
+
+	public ArrayList<Car> getListCarSearch() {
+		return listCarSearch;
+	}
+
+	public void setListCarSearch(ArrayList<Car> listCarSearch) {
+		this.listCarSearch = listCarSearch;
+	}
 
 	public String getProducerName() {
 		return producerName;
