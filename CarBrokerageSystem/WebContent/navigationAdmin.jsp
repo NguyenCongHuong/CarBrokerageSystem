@@ -163,7 +163,7 @@
         <!-- MAIN NAVIGATION 3.1 -->
         <li>
           <html:link action="/manageStyle">
-            <i class="fa fa-car"></i> <span>Phong cách xe</span>
+            <i class="fa fa-car"></i> <span>Dòng xe</span>
           </html:link>
         </li>
         <!-- MAIN NAVIGATION 3.1 END -->

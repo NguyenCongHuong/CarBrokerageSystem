@@ -29,7 +29,4 @@ public class StyleCarBO {
 		return styleCarDAO.checkStyleName(styleCar);
 	}
 
-	public ArrayList<StyleCar> getListStyleHighlight() {
-		return styleCarDAO.getListStyleHighlight();
-	}
 }

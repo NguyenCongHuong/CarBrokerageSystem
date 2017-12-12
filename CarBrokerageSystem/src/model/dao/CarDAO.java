@@ -22,7 +22,7 @@ public class CarDAO extends BaseDAO {
 	 * @return
 	 */
 	public ArrayList<Car> getListCar(String producerID) {
-		String sql = " SELECT DISTINCT c.CarID, c.CarName, p.ProducerName, CarImage = (select top 1 CarImage from [FiveElement] where CarID = c.CarID), c.Price, c.CarHighlight, c.StyleHighlight "
+		String sql = " SELECT DISTINCT c.CarID, c.CarName, p.ProducerName, CarImage = (select top 1 CarImage from [FiveElement] where CarID = c.CarID), c.Price, c.CarHighlight, c.TypeHighlight "
 				+ " FROM [Car] c " + " INNER JOIN [Producer] as p on p.ProducerID = c.ProducerID "
 				+ " INNER JOIN [FiveElement] as f on c.CarID = f.CarID " + " WHERE c.ProducerID = ? "
 				+ " ORDER BY c.CarName ";
@@ -49,7 +49,7 @@ public class CarDAO extends BaseDAO {
 				car.setPrice(Utils.formatCurrency(rs.getString("Price")));
 				car.setMoney(Constants.CURRENCY);
 				car.setCarHighlight(rs.getString("CarHighlight"));
-				car.setStyleHighlight(rs.getString("StyleHighlight"));
+				car.setTypeHighlight(rs.getString("TypeHighlight"));
 				car.setCarImage(Constants.LINK_SHOW_IMG + "" + rs.getString("CarImage"));
 				list.add(car);
 			}
@@ -170,21 +170,21 @@ public class CarDAO extends BaseDAO {
 	}
 
 	/**
-	 * Ham tra ve tat ca xe noi co phong cach noi bat trong tung phong cach
+	 * Ham tra ve tat ca xe noi trong tung loai xe
 	 * 
 	 * @param styleCarID
 	 * @return
 	 */
-	public ArrayList<Car> getListCarByStyle(String styleCarID) {
+	public ArrayList<Car> getListCarByType(String typeCarID) {
 		String sql = " SELECT DISTINCT c.CarID, c.CarName, c.Price, CarImage = (select top 1 CarImage from [FiveElement] where CarID = c.CarID) "
-				+ " FROM [Car] c " + " INNER JOIN [StyleCar] as st on c.StyleCarID = st.StyleCarID"
+				+ " FROM [Car] c " + " INNER JOIN [TypeCar] as t on c.TypeCarID = t.TypeCarID"
 				+ " INNER JOIN [FiveElement] as f on c.CarID = f.CarID"
-				+ " WHERE st.StyleCarID = ? and c.StyleHighlight = 1 " + " ORDER BY c.CarName ";
+				+ " WHERE t.TypeCarID = ? and c.TypeHighlight = 1 " + " ORDER BY c.CarName ";
 		ResultSet rs = null;
 		try {
 			Connection connection = getMyConnection();
 			PreparedStatement restmt = connection.prepareStatement(sql);
-			restmt.setString(1, styleCarID);
+			restmt.setString(1, typeCarID);
 			rs = restmt.executeQuery();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

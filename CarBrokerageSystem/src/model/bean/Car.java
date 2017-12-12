@@ -14,7 +14,7 @@ public class Car {
 	private String styleCarID = "";
 	private String styleCar = "";
 	private String carHighlight = "";
-	private String styleHighlight = "";
+	private String typeHighlight = "";
 	private String carImage = "";
 	private String carBanner = "";
 	private String size = "";
@@ -140,12 +140,12 @@ public class Car {
 		this.carHighlight = carHighlight;
 	}
 
-	public String getStyleHighlight() {
-		return styleHighlight;
+	public String getTypeHighlight() {
+		return typeHighlight;
 	}
 
-	public void setStyleHighlight(String styleHighlight) {
-		this.styleHighlight = styleHighlight;
+	public void setTypeHighlight(String typeHighlight) {
+		this.typeHighlight = typeHighlight;
 	}
 
 	public String getCarID() {

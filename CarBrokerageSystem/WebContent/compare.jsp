@@ -97,12 +97,12 @@
 					                            <td><bean:write name="carForm" property="carDetail2.producerName"/></td>
 					                        </tr>
 					                        <tr>
-					                            <td colspan="2">Thể loại</td>
+					                            <td colspan="2">Loại xe</td>
 					                            <td><bean:write name="carForm" property="carDetail.typeCar"/></td>
 					                            <td><bean:write name="carForm" property="carDetail2.typeCar"/></td>
 					                        </tr>
 					                        <tr>
-					                            <td colspan="2">Kiểu dáng</td>
+					                            <td colspan="2">Dòng xe<</td>
 					                            <td><bean:write name="carForm" property="carDetail.styleCar"/></td>
 					                            <td><bean:write name="carForm" property="carDetail2.styleCar"/></td>
 					                        </tr>

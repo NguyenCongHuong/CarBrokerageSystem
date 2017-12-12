@@ -55,8 +55,8 @@
 								<h2><bean:write name="car" property="carName"/></h2>
 								<span><span><bean:write name="car" property="price"/></span></span>
 								<p><b>Hãng sản xuất:</b> <bean:write name="car" property="producerName"/></p>
-								<p><b>Thể loại:</b> <bean:write name="car" property="typeCar"/></p>
-								<p><b>Kiểu dáng:</b> <bean:write name="car" property="styleCar"/></p>
+								<p><b>Loại xe:</b> <bean:write name="car" property="typeCar"/></p>
+								<p><b>Dòng xe:</b> <bean:write name="car" property="styleCar"/></p>
 								<p><b>Màu sắc:</b> 
 									<logic:iterate name="car" property="listColor" id="listColor">
 										<bean:write name="listColor" property="color"/>, 

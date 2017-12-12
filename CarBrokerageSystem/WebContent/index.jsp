@@ -111,20 +111,20 @@
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-							<logic:iterate name="homeForm" property="listStyleHighlight" id="listStyleHighlight">
-							<bean:define id="styleCarID" name="listStyleHighlight" property="styleCarID"></bean:define>
-								<logic:equal name="listStyleHighlight" property="active" value="1">
+							<logic:iterate name="homeForm" property="listTypeHighlight" id="listTypeHighlight">
+							<bean:define id="typeCarID" name="listTypeHighlight" property="typeCarID"></bean:define>
+								<logic:equal name="listTypeHighlight" property="active" value="1">
 									<li class="active">
-										<a href="#${styleCarID }" data-toggle="tab"> 
-											<bean:write name="listStyleHighlight" property="styleCar" /> 
+										<a href="#${typeCarID }" data-toggle="tab"> 
+											<bean:write name="listTypeHighlight" property="typeCar" /> 
 										</a>
 									</li>
 								</logic:equal>
 								
-								<logic:notEqual name="listStyleHighlight" property="active" value="1">
+								<logic:notEqual name="listTypeHighlight" property="active" value="1">
 									<li>
-										<a href="#${styleCarID }" data-toggle="tab"> 
-											<bean:write name="listStyleHighlight" property="styleCar" /> 
+										<a href="#${typeCarID }" data-toggle="tab"> 
+											<bean:write name="listTypeHighlight" property="typeCar" /> 
 										</a>
 									</li>
 								</logic:notEqual>
@@ -133,11 +133,11 @@
 							</ul>
 						</div>
 						<div class="tab-content">
-						<logic:iterate name="homeForm" property="listStyleHighlight" id="styleHighlight">
-						<bean:define id="styleCarID" name="styleHighlight" property="styleCarID"></bean:define>
-						<logic:equal name="styleHighlight" property="active" value="1">
-							<div class="tab-pane fade active in" id="${styleCarID }" >
-							<logic:iterate name="styleHighlight" property="listCar" id="car">
+						<logic:iterate name="homeForm" property="listTypeHighlight" id="typeHighlight">
+						<bean:define id="typeCarID" name="typeHighlight" property="typeCarID"></bean:define>
+						<logic:equal name="typeHighlight" property="active" value="1">
+							<div class="tab-pane fade active in" id="${typeCarID }" >
+							<logic:iterate name="typeHighlight" property="listCar" id="car">
 							<bean:define id="carImage" name="car" property="carImage"></bean:define>
 							<bean:define id="carName" name="car" property="carName"></bean:define>
 							<bean:define id="carID" name="car" property="carID"></bean:define>
@@ -158,9 +158,9 @@
 							</logic:iterate>
 							</div>
 						</logic:equal>
-						<logic:notEqual name="styleHighlight" property="active" value="1">
-							<div class="tab-pane fade" id="${styleCarID }" >
-							<logic:iterate name="styleHighlight" property="listCar" id="car">
+						<logic:notEqual name="typeHighlight" property="active" value="1">
+							<div class="tab-pane fade" id="${typeCarID }" >
+							<logic:iterate name="typeHighlight" property="listCar" id="car">
 							<bean:define id="carImage" name="car" property="carImage"></bean:define>
 							<bean:define id="carName" name="car" property="carName"></bean:define>
 							<bean:define id="carID" name="car" property="carID"></bean:define>

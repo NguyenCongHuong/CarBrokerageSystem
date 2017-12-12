@@ -28,4 +28,8 @@ public class TypeCarBO {
 	public boolean checkTypeName(String typeCar) {
 		return typeCarDAO.checkTypeName(typeCar);
 	}
+
+	public ArrayList<TypeCar> getListTypeHighlight() {
+		return typeCarDAO.getListTypeHighlight();
+	}
 }

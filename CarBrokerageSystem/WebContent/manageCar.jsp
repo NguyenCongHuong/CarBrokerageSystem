@@ -47,7 +47,7 @@
                   <th>Nhà sản xuất</th>
                   <th>Giá thành</th>
                   <th>Xe nổi bật</th>
-                  <th>Phong cách nổi bật</th>
+                  <th>Loại xe nổi bật</th>
                   <th>Sửa</th>
                   <th>Xóa</th>
                 </tr>
@@ -79,7 +79,7 @@
                   <th>Nhà sản xuất</th>
                   <th>Giá thành</th>
                   <th>Xe nổi bật</th>
-                  <th>Phong cách nổi bật</th>
+                  <th>Loại xe nổi bật</th>
                   <th>Sửa</th>
                   <th>Xóa</th>
                 </tr>

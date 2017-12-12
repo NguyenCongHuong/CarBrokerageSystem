@@ -13,7 +13,7 @@ import form.HomeForm;
 import model.bean.User;
 import model.bo.CarBO;
 import model.bo.ProducerBO;
-import model.bo.StyleCarBO;
+import model.bo.TypeCarBO;
 import model.bo.UserBO;
 
 public class HomeAction extends Action {
@@ -29,14 +29,14 @@ public class HomeAction extends Action {
 		UserBO userBO = new UserBO();
 		ProducerBO producerBO = new ProducerBO();
 		CarBO carBO = new CarBO();
-		StyleCarBO styleCarBO = new StyleCarBO();
+		TypeCarBO typeCarBO = new TypeCarBO();
 
 		String userName = "" + session.getAttribute("userName");
 
 		homeForm.setUserName(userName);
 		homeForm.setListProducer(producerBO.getListProducer());
 		homeForm.setListCarHighlight(carBO.getListCarHighlight());
-		homeForm.setListStyleHighlight(styleCarBO.getListStyleHighlight());
+		homeForm.setListTypeHighlight(typeCarBO.getListTypeHighlight());
 
 		if (session.getAttribute("userName") != null) {
 			User user = userBO.getUser(userName);

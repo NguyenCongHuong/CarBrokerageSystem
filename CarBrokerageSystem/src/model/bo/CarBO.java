@@ -21,8 +21,8 @@ public class CarBO {
 		return carDAO.getListFengShuiCar(fireElement, styleCarID, typeCarID);
 	}
 
-	public ArrayList<Car> getListCarByStyle(String styleCarID) {
-		return carDAO.getListCarByStyle(styleCarID);
+	public ArrayList<Car> getListCarByType(String typeCarID) {
+		return carDAO.getListCarByType(typeCarID);
 	}
 
 	public Car getCarDetail(String carID) {
@@ -32,15 +32,15 @@ public class CarBO {
 	public ArrayList<Car> getListCarPriceOrSeatSreach(String price) {
 		return carDAO.getListCarPriceOrSeatSreach(price);
 	}
-	
+
 	public ArrayList<Car> getListProducerSearch(String producer) {
 		return carDAO.getListProducerSearch(producer);
 	}
-	
+
 	public ArrayList<Car> getListCarSearch(String carName) {
 		return carDAO.getListCarSearch(carName);
 	}
-	
+
 	public ArrayList<Car> getListCar() {
 		return carDAO.getListCar();
 	}

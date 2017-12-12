@@ -31,10 +31,10 @@
 
     <section class="content-header">
       <h1>
-        Danh Sách Tất Cả Hãng Xe
+        Danh Sách Tất Cả Dòng Xe
       </h1>
       <ol class="breadcrumb">
-        <li><html:link action="/manageStyle"><i class="fa fa-car"></i> Phong cách xe</html:link></li>
+        <li><html:link action="/manageStyle"><i class="fa fa-car"></i> Dòng xe</html:link></li>
       </ol>
     </section>
 
@@ -68,7 +68,7 @@
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Tên phong cách xe</th>
+                  <th>Tên dòng xe</th>
                   <th>Sửa</th>
                   <th>Xoá</th>
                 </tr>
@@ -102,7 +102,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Tên phong cách xe</th>
+                  <th>Tên dòng xe</th>
                   <th>Sửa</th>
                   <th>Xoá</th>
                 </tr>
@@ -200,12 +200,12 @@
   });
   
   $('#styleName').attr({
-	  'placeholder': 'Nhập tên phong cách xe',
+	  'placeholder': 'Nhập tên dòng xe',
 	  'required': 'required'
   });
   
   $('#editStyleName').attr({
-	  'placeholder': 'Nhập tên phong cách xe',
+	  'placeholder': 'Nhập tên dòng xe',
 	  'required': 'required'
   });
   
@@ -219,7 +219,7 @@
 	        var editStyleCarID = document.getElementById("editStyleCarID");
 	        var editStyleName = document.getElementById("editStyleName");
 
-	        $('#msg-delete').text('Bạn có muốn xóa phong cách '+targeted_popup_data_name.toUpperCase() +'?');
+	        $('#msg-delete').text('Bạn có muốn xóa dòng xe '+targeted_popup_data_name.toUpperCase() +'?');
 
 	        deleteStyleID.value = targeted_popup_data_ID;
 	        editStyleCarID.value = targeted_popup_data_ID;

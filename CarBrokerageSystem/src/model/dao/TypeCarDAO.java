@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.bean.TypeCar;
+import model.bo.CarBO;
 
 public class TypeCarDAO extends BaseDAO {
+
+	CarBO carBO = new CarBO();
 
 	/**
 	 * Ham tra ve danh sach cac loai xe
@@ -137,5 +140,45 @@ public class TypeCarDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	/**
+	 * Tra ve danh sach tat ca loai xe va tat ca xe noi bat trong tung loai xe do
+	 * 
+	 * @return
+	 */
+	public ArrayList<TypeCar> getListTypeHighlight() {
+		String sql = " SELECT TypeCarID, TypeCar  " + " FROM [TypeCar] " + " ORDER BY TypeCar ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		ArrayList<TypeCar> list = new ArrayList<TypeCar>();
+		TypeCar typeCar;
+		int count = 0;
+		try {
+			while (rs.next()) {
+				typeCar = new TypeCar();
+				typeCar.setTypeCarID(rs.getString("TypeCarID"));
+				typeCar.setTypeCar(rs.getString("TypeCar"));
+				typeCar.setListCar(carBO.getListCarByType(rs.getString("TypeCarID")));
+				if (count == 0) {
+					typeCar.setActive("1");
+				} else
+					typeCar.setActive("0");
+				count += 1;
+				list.add(typeCar);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
