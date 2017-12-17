@@ -14,6 +14,9 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<form-bean name="homeForm" type="form.HomeForm" />
 		<form-bean name="fengShuiForm" type="form.FengShuiForm" />
 		<form-bean name="carForm" type="form.CarForm" />
+		<form-bean name="listTypeForm" type="form.ListTypeForm" />
+		<form-bean name="typeForm" type="form.TypeForm" />
+		<form-bean name="listFollowCarForm" type="form.ListFollowCarForm" />
 	</form-beans>
 	
 	<global-forwards>
@@ -123,6 +126,71 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<action name="carForm"
 			path="/compare" scope="request" type="action.CompareAction">
 			<forward name="compare" path="/compare.jsp" />
+		</action>
+
+		<action name="listTypeForm"
+			path="/manageType" scope="request" type="action.ManageTypeAction">
+			<forward name="manageType" path="/manageType.jsp" />
+		</action>
+		
+		<action name="typeForm"
+			path="/deleteType" scope="request" type="action.DeleteTypeAction">
+			<forward name="deleteType" path="/manageType.do" redirect="true" />
+		</action>
+		
+		<action name="typeForm"
+			path="/addType" scope="request" type="action.AddTypeAction">
+			<forward name="addType" path="/manageType.do" redirect="false" />
+		</action>
+		
+		<action name="typeForm"
+			path="/editType" scope="request" type="action.EditTypeAction">
+			<forward name="editType" path="/manageType.do" redirect="true" />
+		</action>
+		
+		<action name="orderForm"
+			path="/editSeen" scope="request" type="action.EditSeenAction">
+			<forward name="editSeen" path="/manageOrder.do" redirect="true" />
+		</action>
+		
+		<action name="carForm"
+			path="/deleteCar" scope="request" type="action.DeleteCarAction">
+			<forward name="deleteCar" path="/manageCar.do" redirect="true"/>
+		</action>
+		
+		<action name="carForm"
+			path="/editCarHighlight" scope="request" type="action.EditCarHighlightAction">
+			<forward name="editCarHighlight" path="/manageCar.do" redirect="true"/>
+		</action>
+		
+		<action name="carForm"
+			path="/editTypeHighlight" scope="request" type="action.EditTypeHighlightAction">
+			<forward name="editTypeHighlight" path="/manageCar.do" redirect="true"/>
+		</action>
+		
+		<action name="userForm"
+			path="/signUp" scope="request" type="action.SignUpAction">
+			<forward name="signUp" path="/login.jsp" />
+		</action>
+		
+		<action name="userForm"
+			path="/profile" scope="request" type="action.EditProfileAction">
+			<forward name="profile" path="/profile.jsp" />
+		</action>
+		
+		<action name="listFollowCarForm"
+			path="/listFollowCar" scope="request" type="action.ShowListFollowCarAction">
+			<forward name="listFollowCar" path="/followCar.jsp" />
+		</action>
+		
+		<action name="carForm"
+			path="/addCar" scope="request" type="action.AddCarAction">
+			<forward name="addCar" path="/addCar.jsp" />
+		</action>
+		
+		<action name="userForm"
+			path="/listUser" scope="request" type="action.ShowListUserAction">
+			<forward name="listUser" path="/showListUser.jsp"/>
 		</action>
 		
 	</action-mappings>

@@ -45,6 +45,11 @@ public class Constants {
 	public static String MSG_ADD_PRODUCER_FAIL = "Tên hãng xe đã tồn tại!";
 	public static String MSG_ADD_STYLE = "Thêm phong cách xe thành công!";
 	public static String MSG_ADD_STYLE_FAIL = "Tên phong cách xe đã tồn tại!";
+	public static String MSG_ADD_TYPE = "Thêm loại xe thành công!";
+	public static String MSG_ADD_TYPE_FAIL = "Tên loại xe đã tồn tại!";
+	public static String MSG_PASS = "Mật khẩu nhập lại chưa đúng!";
+	public static String MSG_USER_NAME = "Tên đăng nhập đã tồn tại!";
+	public static String MSG_SIGN_UP_SUCCESS = "Bạn đã đăng ký tài khoản thành công!";
 
 	/**
 	 * Loai tien

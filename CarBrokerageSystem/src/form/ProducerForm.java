@@ -1,6 +1,11 @@
 package form;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 public class ProducerForm extends ActionForm {
 
@@ -40,6 +45,15 @@ public class ProducerForm extends ActionForm {
 
 	public void setProducerName(String producerName) {
 		this.producerName = producerName;
+	}
+	
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -6,7 +6,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+<head lang="vi">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
@@ -24,7 +24,7 @@
 
     <html:link action="/manageCar" styleClass="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Trang Quản Lý</b></span>
     </html:link>
@@ -42,29 +42,29 @@
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
-              <span class="label label-danger">4</span>
+              <span class="label label-danger"><bean:write name="listCarForm" property="numberNewOrder"/></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
+              <li class="header">Bạn có <bean:write name="listCarForm" property="numberNewOrder"/> đơn đặt hàng mới</li>
+              
+              <logic:iterate name="listCarForm" property="listNumberNewOrder" id="listNumberNewOrder">
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li><!-- start message -->
-                    <a href="#">
+                  	<html:link action="/manageOrder">
                       <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="dist/img/avatar.png" class="img-circle" alt="User Image">
                       </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
+                      <h4><bean:write name="listNumberNewOrder" property="orderer"/></h4>
+                      <p><bean:write name="listNumberNewOrder" property="carName"/></p>
+                    </html:link>
                   </li>
                   <!-- end message -->
                 </ul>
               </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
+              </logic:iterate>
+             
             </ul>
           </li>
 			
@@ -72,13 +72,13 @@
 		<bean:define id="userName" name="user" property="userName"></bean:define>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="dist/img/avatar5.png" class="user-image" alt="User Image">
               <span class="hidden-xs"><bean:write name="user" property="userName"/></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
 
                 <p>
                   <bean:write name="user" property="fullName"/>
@@ -107,7 +107,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Người Quản Lý</p>
@@ -119,7 +119,7 @@
         <li class="header">Chức Năng Chính</li>
 
         <!-- MAIN NAVIGATION 1 -->
-        <li class="active treeview menu-open">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-car"></i> <span>Danh sách xe</span>
             <span class="pull-right-container">
@@ -155,9 +155,9 @@
         <!-- MAIN NAVIGATION 2 END -->
         <!-- MAIN NAVIGATION 3 -->
         <li>
-          <a href="#">
+          <html:link action="/manageType">
             <i class="fa fa-car"></i> <span>Loại xe</span>
-          </a>
+          </html:link>
         </li>
         <!-- MAIN NAVIGATION 3 END -->
         <!-- MAIN NAVIGATION 3.1 -->
@@ -167,45 +167,32 @@
           </html:link>
         </li>
         <!-- MAIN NAVIGATION 3.1 END -->
+        <!-- MAIN NAVIGATION 3.2 -->
+        <li>
+          <html:link action="/addCar">
+            <i class="fa fa-plus-square"></i> <span>Thêm xe</span>
+          </html:link>
+        </li>
+        <!-- MAIN NAVIGATION 3.2 END -->
         <!-- MAIN NAVIGATION 4 -->
         <li>
           <html:link action="/manageOrder">
             <i class="fa fa-newspaper-o"></i>
-            <span>Danh sách đơn đặt hàng</span>
+            <span>Đơn đặt hàng</span>
             <span class="pull-right-container">
-              <span class="label pull-right bg-red">4</span>
+              <span class="label pull-right bg-red"><bean:write name="listCarForm" property="numberNewOrder"/></span>
             </span>
           </html:link>
         </li>
         <!-- MAIN NAVIGATION 4 END -->
-        <!-- MAIN NAVIGATION 5 -->
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-star"></i> <span>Quản lý hiển thị</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Xe nổi bật
-                <span class="pull-right-container">
-                  <span class="label label-primary pull-right">4</span>
-                </span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Phong cách nổi bật
-                <span class="pull-right-container">
-                  <span class="label label-primary pull-right">4</span>
-                </span>
-              </a>
-            </li>
-
-          </ul>
+         <!-- MAIN NAVIGATION 4 -->
+        <li>
+          <html:link action="/listUser">
+            <i class="fa fa-user"></i>
+            <span>Danh sách người dùng</span>
+          </html:link>
         </li>
-        <!-- MAIN NAVIGATION 5 END -->
+        <!-- MAIN NAVIGATION 4 END -->
       </ul>
     </section>
     <!-- /.sidebar -->

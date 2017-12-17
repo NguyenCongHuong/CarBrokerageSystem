@@ -22,7 +22,7 @@ public class CarDAO extends BaseDAO {
 	 * @return
 	 */
 	public ArrayList<Car> getListCar(String producerID) {
-		String sql = " SELECT DISTINCT c.CarID, c.CarName, p.ProducerName, CarImage = (select top 1 CarImage from [FiveElement] where CarID = c.CarID), c.Price, c.CarHighlight, c.TypeHighlight "
+		String sql = " SELECT DISTINCT c.CarID, c.CarName, p.ProducerID ,p.ProducerName, CarImage = (select top 1 CarImage from [FiveElement] where CarID = c.CarID), c.Price, c.CarHighlight, c.TypeHighlight "
 				+ " FROM [Car] c " + " INNER JOIN [Producer] as p on p.ProducerID = c.ProducerID "
 				+ " INNER JOIN [FiveElement] as f on c.CarID = f.CarID " + " WHERE c.ProducerID = ? "
 				+ " ORDER BY c.CarName ";
@@ -45,6 +45,7 @@ public class CarDAO extends BaseDAO {
 				car = new Car();
 				car.setCarID(rs.getString("CarID"));
 				car.setCarName(rs.getString("CarName"));
+				car.setProducerID(rs.getString("ProducerID"));
 				car.setProducerName(rs.getString("ProducerName"));
 				car.setPrice(Utils.formatCurrency(rs.getString("Price")));
 				car.setMoney(Constants.CURRENCY);
@@ -432,6 +433,318 @@ public class CarDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	/**
+	 * Ham them du lieu mot xe vap bang Car va tra ve gia tri carID moi duoc them
+	 * 
+	 * @param carName
+	 * @param price
+	 * @param warranty
+	 * @param producerID
+	 * @param styleCarID
+	 * @param typeCarID
+	 * @param carHighlight
+	 * @param typeHighlight
+	 * @param size
+	 * @param wheelbase
+	 * @param weight
+	 * @param maxWeight
+	 * @param engineType
+	 * @param torque
+	 * @param enginePower
+	 * @param topSpeed
+	 * @param fuelTankCapacity
+	 * @param fuel
+	 * @param fuelConsumption
+	 * @param emissionStandard
+	 * @param gear
+	 * @param frontBrake
+	 * @param rearBrake
+	 * @param frontFoglamp
+	 * @param rearFoglamp
+	 * @param rearviewMirrorOutside
+	 * @param winscreenWiper
+	 * @param antenna
+	 * @param doorHandle
+	 * @param airConditioner
+	 * @param rearviewMirrorInside
+	 * @param sunroof
+	 * @param seatType
+	 * @param seat
+	 * @param sunshade
+	 * @param cupHolder
+	 * @param speakerType
+	 * @param dics
+	 * @param numberSpeaker
+	 * @param usb
+	 * @param bluetooth
+	 * @param electronicStabilityControl
+	 * @param brakelight
+	 * @param childSafetyLock
+	 * @param seatBelt
+	 * @param airbag
+	 * @return
+	 */
+	public void addCar(String carName, String price, String warranty, String producerID, String styleCarID,
+			String typeCarID, String size, String wheelbase, String weight, String maxWeight, String engineType,
+			String torque, String enginePower, String topSpeed, String fuelTankCapacity, String fuel,
+			String fuelConsumption, String emissionStandard, String gear, String frontBrake, String rearBrake,
+			String frontFoglamp, String rearFoglamp, String rearviewMirrorOutside, String winscreenWiper,
+			String antenna, String doorHandle, String airConditioner, String rearviewMirrorInside, String sunroof,
+			String seatType, String seat, String sunshade, String cupHolder, String speakerType, String dics,
+			String numberSpeaker, String usb, String bluetooth, String electronicStabilityControl, String brakelight,
+			String childSafetyLock, String seatBelt, String airbag) {
+		String sql = " INSERT INTO [Car]( "
+				+ " CarName, Price, Warranty, ProducerID, StyleCarID, TypeCarID, CarHighlight, TypeHighlight, "
+				+ " Size, Wheelbase, Weight, MaxWeight, EngineType, Torque, EnginePower, TopSpeed, FuelTankCapacity, Fuel, "
+				+ " FuelConsumption, EmissionStandard, Gear, FrontBrake, RearBrake, FrontFoglamp, RearFoglamp, RearviewMirrorOutside, WinscreenWiper, "
+				+ " Antenna, DoorHandle, AirConditioner, RearviewMirrorInside, Sunroof, SeatType, Seat, Sunshade, CupHolder, SpeakerType, "
+				+ " Dics, NumberSpeaker, Usb, Bluetooth, ElectronicStabilityControl, Brakelight, ChildSafetyLock, SeatBelt, Airbag) "
+				+ " VALUES (?, ?, ?, ?, ?, ? ,0 ,0 ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, carName);
+			restmt.setString(2, price);
+			restmt.setString(3, warranty);
+			restmt.setString(4, producerID);
+			restmt.setString(5, styleCarID);
+			restmt.setString(6, typeCarID);
+			restmt.setString(7, size);
+			restmt.setString(8, wheelbase);
+			restmt.setString(9, weight);
+			restmt.setString(10, maxWeight);
+			restmt.setString(11, engineType);
+			restmt.setString(12, torque);
+			restmt.setString(13, enginePower);
+			restmt.setString(14, topSpeed);
+			restmt.setString(15, fuelTankCapacity);
+			restmt.setString(16, fuel);
+			restmt.setString(17, fuelConsumption);
+			restmt.setString(18, emissionStandard);
+			restmt.setString(19, gear);
+			restmt.setString(20, frontBrake);
+			restmt.setString(21, rearBrake);
+			restmt.setString(22, frontFoglamp);
+			restmt.setString(23, rearFoglamp);
+			restmt.setString(24, rearviewMirrorOutside);
+			restmt.setString(25, winscreenWiper);
+			restmt.setString(26, antenna);
+			restmt.setString(27, doorHandle);
+			restmt.setString(28, airConditioner);
+			restmt.setString(29, rearviewMirrorInside);
+			restmt.setString(30, sunroof);
+			restmt.setString(31, seatType);
+			restmt.setString(32, seat);
+			restmt.setString(33, sunshade);
+			restmt.setString(34, cupHolder);
+			restmt.setString(35, speakerType);
+			restmt.setString(36, dics);
+			restmt.setString(37, numberSpeaker);
+			restmt.setString(38, usb);
+			restmt.setString(39, bluetooth);
+			restmt.setString(40, electronicStabilityControl);
+			restmt.setString(41, brakelight);
+			restmt.setString(42, childSafetyLock);
+			restmt.setString(43, seatBelt);
+			restmt.setString(44, airbag);
+			restmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String getCarID(String carName) {
+		String sql = " SELECT CarID FROM [Car] WHERE CarName = ? ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, carName);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String id = "";
+		try {
+			while (rs.next()) {
+				id = rs.getString("CarID");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+
+	public void deleteCar(String carID) {
+		String sql = "DELETE FROM [Car] WHERE CarID = ?";
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, carID);
+			restmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String getCarHighlight(String carID) {
+		String sql = " SELECT CarHighlight FROM [Car] WHERE CarID = ? ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, carID);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String carHighlight = "";
+		try {
+			while (rs.next()) {
+				carHighlight = rs.getString("CarHighlight");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return carHighlight;
+	}
+
+	public String getTypeHighlight(String carID) {
+		String sql = " SELECT TypeHighlight FROM [Car] WHERE CarID = ? ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, carID);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String typeHighlight = "";
+		try {
+			while (rs.next()) {
+				typeHighlight = rs.getString("TypeHighlight");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return typeHighlight;
+	}
+
+	public void editCarHighlight(String carID) {
+		String sql = " UPDATE [Car] SET CarHighlight = ";
+
+		if ("1".equals(getCarHighlight(carID))) {
+			sql += " 0 WHERE CarID = ? ";
+		} else
+			sql += " 1 WHERE CarID = ? ";
+
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+
+			restmt.setString(1, carID);
+
+			restmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void editTypeHighlight(String carID) {
+		String sql = " UPDATE [Car] SET TypeHighlight = ";
+
+		if ("1".equals(getTypeHighlight(carID))) {
+			sql += " 0 WHERE CarID = ? ";
+		} else
+			sql += " 1 WHERE CarID = ? ";
+
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+
+			restmt.setString(1, carID);
+
+			restmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean checkFollowCar(String userName, String carID) {
+		String sqlCheckLogin = "SELECT UserName FROM [FollowCar] WHERE UserName = ? and CarID = ? ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sqlCheckLogin);
+			restmt.setString(1, userName);
+			restmt.setString(2, carID);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			if (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	public void deleteFollowCar(String carID, String userName) {
+		String sql = "DELETE FROM [FollowCar] WHERE CarID = ? and UserName = ? ";
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, carID);
+			restmt.setString(2, userName);
+			restmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void addFollowCar(String carID, String userName) {
+		String sql = " INSERT INTO [FollowCar](UserName, CarID) VALUES (?,?) ";
+
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+
+			restmt.setString(1, userName);
+			restmt.setString(2, carID);
+
+			restmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

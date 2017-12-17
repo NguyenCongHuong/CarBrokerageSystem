@@ -1,6 +1,11 @@
 package form;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 public class StyleForm extends ActionForm {
 
@@ -41,6 +46,15 @@ public class StyleForm extends ActionForm {
 
 	public void setNotifyFail(String notifyFail) {
 		this.notifyFail = notifyFail;
+	}
+	
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

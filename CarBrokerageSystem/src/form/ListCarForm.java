@@ -1,10 +1,15 @@
 package form;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 import model.bean.Car;
+import model.bean.Order;
 import model.bean.Producer;
 
 public class ListCarForm extends ActionForm {
@@ -18,6 +23,24 @@ public class ListCarForm extends ActionForm {
 	private String searchString;
 	private String nofi;
 	private ArrayList<Car> listCarSearch;
+	private String numberNewOrder;
+	private ArrayList<Order> listNumberNewOrder;
+
+	public String getNumberNewOrder() {
+		return numberNewOrder;
+	}
+
+	public void setNumberNewOrder(String numberNewOrder) {
+		this.numberNewOrder = numberNewOrder;
+	}
+
+	public ArrayList<Order> getListNumberNewOrder() {
+		return listNumberNewOrder;
+	}
+
+	public void setListNumberNewOrder(ArrayList<Order> listNumberNewOrder) {
+		this.listNumberNewOrder = listNumberNewOrder;
+	}
 
 	public String getSearchString() {
 		return searchString;
@@ -73,6 +96,15 @@ public class ListCarForm extends ActionForm {
 
 	public void setListCar(ArrayList<Car> listCar) {
 		this.listCar = listCar;
+	}
+
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -8,15 +8,6 @@ public class User {
 	private String phoneNumber;
 	private String address;
 	private String type;
-	private String passwordEmail;
-
-	public String getPasswordEmail() {
-		return passwordEmail;
-	}
-
-	public void setPasswordEmail(String passwordEmail) {
-		this.passwordEmail = passwordEmail;
-	}
 
 	public String getType() {
 		return type;

@@ -44,4 +44,57 @@ public class CarBO {
 	public ArrayList<Car> getListCar() {
 		return carDAO.getListCar();
 	}
+
+	public void addCar(String carName, String price, String warranty, String producerID, String styleCarID,
+			String typeCarID, String size, String wheelbase, String weight, String maxWeight, String engineType,
+			String torque, String enginePower, String topSpeed, String fuelTankCapacity, String fuel,
+			String fuelConsumption, String emissionStandard, String gear, String frontBrake, String rearBrake,
+			String frontFoglamp, String rearFoglamp, String rearviewMirrorOutside, String winscreenWiper,
+			String antenna, String doorHandle, String airConditioner, String rearviewMirrorInside, String sunroof,
+			String seatType, String seat, String sunshade, String cupHolder, String speakerType, String dics,
+			String numberSpeaker, String usb, String bluetooth, String electronicStabilityControl, String brakelight,
+			String childSafetyLock, String seatBelt, String airbag) {
+		carDAO.addCar(carName, price, warranty, producerID, styleCarID, typeCarID, size, wheelbase, weight, maxWeight,
+				engineType, torque, enginePower, topSpeed, fuelTankCapacity, fuel, fuelConsumption, emissionStandard,
+				gear, frontBrake, rearBrake, frontFoglamp, rearFoglamp, rearviewMirrorOutside, winscreenWiper, antenna,
+				doorHandle, airConditioner, rearviewMirrorInside, sunroof, seatType, seat, sunshade, cupHolder,
+				speakerType, dics, numberSpeaker, usb, bluetooth, electronicStabilityControl, brakelight,
+				childSafetyLock, seatBelt, airbag);
+	}
+
+	public String getCarID(String carName) {
+		return carDAO.getCarID(carName);
+	}
+
+	public void deleteCar(String carID) {
+		carDAO.deleteCar(carID);
+	}
+
+	public String getCarHighlight(String carID) {
+		return carDAO.getCarHighlight(carID);
+	}
+
+	public String getTypeHighlight(String carID) {
+		return carDAO.getTypeHighlight(carID);
+	}
+
+	public void editCarHighlight(String carID) {
+		carDAO.editCarHighlight(carID);
+	}
+
+	public void editTypeHighlight(String carID) {
+		carDAO.editTypeHighlight(carID);
+	}
+
+	public boolean checkFollowCar(String userName, String carID) {
+		return carDAO.checkFollowCar(userName, carID);
+	}
+
+	public void deleteFollowCar(String carID, String userName) {
+		carDAO.deleteFollowCar(carID, userName);
+	}
+
+	public void addFollowCar(String carID, String userName) {
+		carDAO.addFollowCar(carID, userName);
+	}
 }

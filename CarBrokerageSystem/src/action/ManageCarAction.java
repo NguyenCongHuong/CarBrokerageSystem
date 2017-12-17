@@ -15,6 +15,7 @@ import common.Constants;
 import form.ListCarForm;
 import model.bean.Producer;
 import model.bo.CarBO;
+import model.bo.OrderBO;
 import model.bo.ProducerBO;
 
 public class ManageCarAction extends Action {
@@ -33,22 +34,33 @@ public class ManageCarAction extends Action {
 		if (Constants.USER.equals(session.getAttribute("type"))) {
 			return mapping.findForward("login");
 		}
-		
+
 		ListCarForm listCarForm = (ListCarForm) form;
 		ProducerBO producerBO = new ProducerBO();
 		CarBO carBO = new CarBO();
+		OrderBO orderBO = new OrderBO();
 
 		ArrayList<Producer> listProducer = producerBO.getListProducer();
 		listCarForm.setListProducer(listProducer);
 
 		String producerID = listCarForm.getProducerID();
-
+		String producerName = "";
 		if (producerID == null) {
-			producerID = listProducer.get(0).getProducerID();
-			listCarForm.setProducerName(listProducer.get(0).getProducerName());
+			if (session.getAttribute("producerID") == null) {
+				producerID = listProducer.get(0).getProducerID();
+				producerName = listProducer.get(0).getProducerName();
+			} else {
+				producerID = "" + session.getAttribute("producerID");
+				producerName = producerBO.getProducerName(producerID);
+			}
+		} else {
+			producerName = producerBO.getProducerName(producerID);
 		}
 
+		listCarForm.setProducerName(producerName);
+		listCarForm.setNumberNewOrder(orderBO.numberNewOrder());
 		listCarForm.setListCar(carBO.getListCar(producerID));
+		listCarForm.setListNumberNewOrder(orderBO.getListNumberNewOrder());
 
 		return mapping.findForward("manageCar");
 	}

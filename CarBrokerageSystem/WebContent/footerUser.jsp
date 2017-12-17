@@ -6,7 +6,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+<head lang="vi">
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -44,8 +44,8 @@
 						<div class="single-widget">
 							<h2>Đường dây nóng</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><label>0985009424</label></li>
-								<li><a href="#">songkiemsanh@gmail.com</a></li>
+								<li><label>01264423424</label></li>
+								<li><a href="#">Revenge.Victor@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -55,16 +55,7 @@
 					<div class="col-sm-2">
 	
 					</div>
-					<div class="col-sm-3 col-sm-offset-1">
-						<div class="single-widget">
-							<h2>Email</h2>
-							<form action="#" class="searchform">
-								<input type="text" placeholder="Your email address" />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Nhập emal để nhận thông tin khuyến mãi từ chúng tôi!</p>
-							</form>
-						</div>
-					</div>
+
 					
 				</div>
 			</div>

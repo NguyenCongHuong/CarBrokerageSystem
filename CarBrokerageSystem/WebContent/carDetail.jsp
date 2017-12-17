@@ -6,7 +6,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+<head lang="vi">
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -43,6 +43,7 @@
 					<div class="product-details"><!--product-details-->
 					<bean:define id="car" name="carForm" property="carDetail"></bean:define>
 					<bean:define id="carImage" name="car" property="carImage"></bean:define>
+					<bean:define id="carID" name="car" property="carID"></bean:define>
 					<bean:define id="carName" name="car" property="carName"></bean:define>
 					<bean:define id="price" name="car" property="price"></bean:define>
 						<div class="col-sm-6">
@@ -67,6 +68,18 @@
 								<a>
 									<button type="button" class="btn btn-default add-to-cart" style="margin-bottom: 0px" onclick="document.getElementById('order').style.display='block'">Đặt hàng</button>
 								</a>
+								
+								<logic:equal value="0" name="carForm" property="follow">
+								<html:link action="/carDetail?carID=${carID }&submit=followCar">
+									<button type="button" name="submit" value="followCar" class="btn btn-default add-to-cart" style="margin-bottom: 0px" >Theo dõi xe</button>
+								</html:link>
+								</logic:equal>
+								<logic:notEqual value="0" name="carForm" property="follow">
+								<html:link action="/carDetail?carID=${carID }&submit=followCar">
+									<button type="button" name="submit" value="followCar" class="btn btn-default add-to-cart" style="margin-bottom: 0px" >Đã theo dõi xe</button>
+								</html:link>
+								</logic:notEqual>
+								
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->
@@ -410,7 +423,8 @@
                 </tr>
                 <tr>
                     <td style="padding-left: 5px">Giá</td>
-                    <td><input class="input-info" style="background-color: #e0e0e0" type ="text" name="priceOrder" id="priceOrder" maxlength="250" readonly="readonly" value="${price }"></td>
+                    <td>
+                    <input class="input-info" style="background-color: #e0e0e0" type ="text" name="priceOrder" id="priceOrder" maxlength="250" readonly="readonly" value="${price }"></td>
                 </tr>
                 <tr>
                     <td style="padding-left: 5px">Tên người đặt</td>
@@ -418,11 +432,11 @@
                 </tr>
                 <tr>
                     <td style="padding-left: 5px">Số điện thoại</td>
-                    <td><input class="input-info" type = "text" name="phoneNumber" id="phoneOrder" maxlength="250"></td>
+                    <td><input class="input-info" type = "number" name="phoneNumber" id="phoneOrder" maxlength="250"></td>
                 </tr>
                 <tr>
                     <td style="padding-left: 5px">Email</td>
-                    <td><input class="input-info" type = "text" name="email" id="emailOrder" maxlength="250"></td>
+                    <td><input class="input-info" type = "email" name="email" id="emailOrder" maxlength="250"></td>
                 </tr>
                 <tr>
                     <td style="padding-left: 5px">Địa chỉ</td>

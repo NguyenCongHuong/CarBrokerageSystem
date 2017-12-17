@@ -2,7 +2,6 @@ package action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -23,7 +22,6 @@ public class FengShuiAction extends Action {
 			HttpServletResponse response) throws Exception {
 
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
 
 		FengShuiForm fengShuiForm = (FengShuiForm) form;
 		StyleCarBO styleCarBO = new StyleCarBO();

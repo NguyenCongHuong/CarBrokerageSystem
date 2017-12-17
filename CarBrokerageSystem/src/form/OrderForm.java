@@ -1,6 +1,11 @@
 package form;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 public class OrderForm extends ActionForm {
 
@@ -77,6 +82,15 @@ public class OrderForm extends ActionForm {
 
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
+	}
+	
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

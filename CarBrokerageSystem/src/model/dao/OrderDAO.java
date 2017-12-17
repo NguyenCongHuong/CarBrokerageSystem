@@ -74,8 +74,9 @@ public class OrderDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	public void addOrder(String orderer, String email, String phoneNumber, String address, String orderDate, String carID, String userName) {
+
+	public void addOrder(String orderer, String email, String phoneNumber, String address, String orderDate,
+			String carID, String userName) {
 		String sql = " INSERT INTO [Order](Orderer, Email, PhoneNumber, Address, OrderDate, CarID, Seen, Contacted, UserName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		try {
 			Connection connection = getMyConnection();
@@ -86,7 +87,7 @@ public class OrderDAO extends BaseDAO {
 			restmt.setString(4, address);
 			restmt.setString(5, orderDate);
 			restmt.setString(6, carID);
-			restmt.setString(7, "1");
+			restmt.setString(7, "0");
 			restmt.setString(8, "0");
 			restmt.setString(9, userName);
 
@@ -97,4 +98,72 @@ public class OrderDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public String numberNewOrder() {
+		String sql = " SELECT [count] = COUNT(*) FROM [Order] WHERE Seen = 1 ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String count = "";
+		try {
+			while (rs.next()) {
+				count = rs.getString("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	public ArrayList<Order> getListNumberNewOrder() {
+		String sql = " SELECT c.CarName, o.Orderer " + " FROM [Order] o "
+				+ " INNER JOIN [Car] as c on o.CarID = c.CarID " + " WHERE o.Seen = 1 " + " ORDER BY o.Orderer ";
+		ResultSet rs = null;
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			rs = restmt.executeQuery();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		ArrayList<Order> list = new ArrayList<Order>();
+		Order order;
+		try {
+			while (rs.next()) {
+				order = new Order();
+				order.setOrderer(rs.getString("Orderer"));
+				order.setCarName(rs.getString("CarName"));
+				list.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public void editSeen(String orderID) {
+		String sql = " UPDATE [Order] SET Seen = 0 WHERE OrderID = ? ";
+		try {
+			Connection connection = getMyConnection();
+			PreparedStatement restmt = connection.prepareStatement(sql);
+			restmt.setString(1, orderID);
+			restmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

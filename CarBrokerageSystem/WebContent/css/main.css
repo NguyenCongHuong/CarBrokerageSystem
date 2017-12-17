@@ -1483,7 +1483,7 @@ h2.title {
 #form {
   display: block;
   margin-bottom: 185px;
-  margin-top: 185px;
+  margin-top: 95px;
   overflow: hidden;
 }
 
@@ -2733,6 +2733,11 @@ h2.title {
   color: white;
     text-align: center;
     background-color: #e0e0e0;
+    padding: 10px;
+}
+.container-info-footer2{
+  color: white;
+    text-align: center;
     padding: 10px;
 }
 
