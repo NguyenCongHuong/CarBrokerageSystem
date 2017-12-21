@@ -120,21 +120,21 @@ public class CarDAO extends BaseDAO {
 
 			if ("0".equals(styleCarID) == true && "0".equals(typeCarID) == true) {
 				sql += sqlOrderBy;
-				System.out.println("sql: " + sql);
+//				System.out.println("sql: " + sql);
 				restmt = connection.prepareStatement(sql);
 			} else if ("0".equals(styleCarID) == true && "0".equals(typeCarID) == false) {
 				sql += " and c.TypeCarID = ? " + sqlOrderBy;
-				System.out.println("sql: " + sql);
+//				System.out.println("sql: " + sql);
 				restmt = connection.prepareStatement(sql);
 				restmt.setString(1, typeCarID);
 			} else if ("0".equals(styleCarID) == false && "0".equals(typeCarID) == true) {
 				sql += " and c.StyleCarID = ? " + sqlOrderBy;
-				System.out.println("sql: " + sql);
+//				System.out.println("sql: " + sql);
 				restmt = connection.prepareStatement(sql);
 				restmt.setString(1, styleCarID);
 			} else {
 				sql += " and c.StyleCarID = ? and c.TypeCarID = ? " + sqlOrderBy;
-				System.out.println("sql: " + sql);
+//				System.out.println("sql: " + sql);
 				restmt = connection.prepareStatement(sql);
 				restmt.setString(1, styleCarID);
 				restmt.setString(2, typeCarID);

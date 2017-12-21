@@ -176,6 +176,13 @@
         <!-- MAIN NAVIGATION 3.2 END -->
         <!-- MAIN NAVIGATION 4 -->
         <li>
+          <html:link action="/manageUser">
+            <i class="fa fa-user"></i> <span>Danh sách người dùng</span>
+          </html:link>
+        </li>
+        <!-- MAIN NAVIGATION 4 END -->
+        <!-- MAIN NAVIGATION 5 -->
+        <li>
           <html:link action="/manageOrder">
             <i class="fa fa-newspaper-o"></i>
             <span>Đơn đặt hàng</span>
@@ -184,15 +191,9 @@
             </span>
           </html:link>
         </li>
-        <!-- MAIN NAVIGATION 4 END -->
-         <!-- MAIN NAVIGATION 4 -->
-        <li>
-          <html:link action="/listUser">
-            <i class="fa fa-user"></i>
-            <span>Danh sách người dùng</span>
-          </html:link>
-        </li>
-        <!-- MAIN NAVIGATION 4 END -->
+        <!-- MAIN NAVIGATION 5 END -->
+        
+        
       </ul>
     </section>
     <!-- /.sidebar -->

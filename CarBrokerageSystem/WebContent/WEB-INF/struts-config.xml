@@ -17,6 +17,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<form-bean name="listTypeForm" type="form.ListTypeForm" />
 		<form-bean name="typeForm" type="form.TypeForm" />
 		<form-bean name="listFollowCarForm" type="form.ListFollowCarForm" />
+		<form-bean name="listUserForm" type="form.ListUserForm" />
 	</form-beans>
 	
 	<global-forwards>
@@ -188,9 +189,9 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="addCar" path="/addCar.jsp" />
 		</action>
 		
-		<action name="userForm"
-			path="/listUser" scope="request" type="action.ShowListUserAction">
-			<forward name="listUser" path="/showListUser.jsp"/>
+		<action name="listUserForm"
+			path="/manageUser" scope="request" type="action.ManageUserAction">
+			<forward name="manageUser" path="/manageUser.jsp" />
 		</action>
 		
 	</action-mappings>

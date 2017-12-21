@@ -6,10 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import common.Utils;
 import model.bean.User;
 
 public class UserDAO extends BaseDAO {
-	
+
 	/**
 	 * Ham kiem tra dang nhap
 	 * 
@@ -22,8 +23,7 @@ public class UserDAO extends BaseDAO {
 		ResultSet rs = null;
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-					.prepareStatement(sqlCheckLogin);
+			PreparedStatement restmt = connection.prepareStatement(sqlCheckLogin);
 			restmt.setString(1, userName);
 			restmt.setString(2, password);
 			rs = restmt.executeQuery();
@@ -43,7 +43,7 @@ public class UserDAO extends BaseDAO {
 
 		return false;
 	}
-	
+
 	/**
 	 * Ham tra ve toan bo thong tin cua user
 	 * 
@@ -85,7 +85,7 @@ public class UserDAO extends BaseDAO {
 
 		return user;
 	}
-	
+
 	public void addUser(String userName, String fullName, String password, String phoneNumber, String email) {
 		String sql = " INSERT INTO [User](UserName, Password, Type, FullName, Email, PhoneNumber) "
 				+ " VALUES (?, ?, 1, ?, ?, ?) ";
@@ -107,14 +107,13 @@ public class UserDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public boolean checkUserName(String userName) {
 		String sqlCheckLogin = "SELECT UserName FROM [User] WHERE UserName = ? ";
 		ResultSet rs = null;
 		try {
 			Connection connection = getMyConnection();
-			PreparedStatement restmt = connection
-					.prepareStatement(sqlCheckLogin);
+			PreparedStatement restmt = connection.prepareStatement(sqlCheckLogin);
 			restmt.setString(1, userName);
 			rs = restmt.executeQuery();
 		} catch (ClassNotFoundException e) {
@@ -133,7 +132,7 @@ public class UserDAO extends BaseDAO {
 
 		return false;
 	}
-	
+
 	public void editUser(String userName, String fullName, String phoneNumber, String email, String address) {
 		String sql = " UPDATE [User] SET FullName = ?, PhoneNumber = ?, Email = ?, Address = ? "
 				+ " WHERE UserName = ? ";
@@ -155,7 +154,7 @@ public class UserDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public ArrayList<User> getListUser() {
 		String sql = " SELECT * FROM [User] WHERE type = '1' ";
 		ResultSet rs = null;
@@ -177,6 +176,7 @@ public class UserDAO extends BaseDAO {
 				user.setFullName(rs.getString("FullName"));
 				user.setPhoneNumber(rs.getString("PhoneNumber"));
 				user.setUserName(rs.getString("UserName"));
+				user.setAddress(Utils.convertNullString(rs.getString("Address")));
 				user.setEmail(rs.getString("Email"));
 				list.add(user);
 			}

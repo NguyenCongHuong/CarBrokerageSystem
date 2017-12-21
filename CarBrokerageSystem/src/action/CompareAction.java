@@ -27,8 +27,6 @@ public class CompareAction extends Action {
 
 		String carID1 = carForm.getCarID();
 		String carID2 = carForm.getCarID2();
-		String producerID1 = carForm.getProducerID();
-		String producerID2 = carForm.getProducerID2();
 
 		carForm.setListProducer(producerBO.getListProducer());
 		carForm.setListCar(carBO.getListCar());
